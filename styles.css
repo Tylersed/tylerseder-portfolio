@@ -1,0 +1,2143 @@
+/*
+  styles.css
+  Generated: 2026-02-18T19:06:50.727442Z
+*/
+/* ==========================================================================
+   Design system (tokens)
+   ==========================================================================
+   This site is intentionally built as a "small product", not a page:
+   - tokenized color + spacing + type scale
+   - reusable components (cards, buttons, grids)
+   - accessibility defaults
+   - "architect-y" documentation in comments
+   ========================================================================== */
+
+:root{
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Type scale */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.925rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3.0rem;
+
+  /* Line heights */
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.7;
+
+  /* Spacing scale (4px grid) */
+  --s0: 0;
+  --s1: .25rem;
+  --s2: .5rem;
+  --s3: .75rem;
+  --s4: 1rem;
+  --s5: 1.25rem;
+  --s6: 1.5rem;
+  --s7: 2rem;
+  --s8: 2.5rem;
+  --s9: 3rem;
+  --s10: 4rem;
+  --s11: 5rem;
+
+  /* Radius */
+  --r1: 10px;
+  --r2: 14px;
+  --r3: 22px;
+
+  /* Shadows */
+  --sh1: 0 1px 0 rgba(0,0,0,.35), 0 10px 40px rgba(0,0,0,.22);
+  --sh2: 0 2px 0 rgba(0,0,0,.35), 0 18px 70px rgba(0,0,0,.35);
+  --sh3: 0 1px 0 rgba(0,0,0,.35), 0 22px 90px rgba(0,0,0,.42);
+
+  /* Motion */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --dur-1: 110ms;
+  --dur-2: 190ms;
+  --dur-3: 340ms;
+  --dur-4: 650ms;
+
+  /* Container */
+  --container: min(1120px, calc(100% - 2*var(--s6)));
+
+  /* Colors (dark default) */
+  --bg: #0a0a0b;
+  --bg2: #0f1013;
+  --panel: rgba(255,255,255,.04);
+  --panel2: rgba(255,255,255,.06);
+  --panel3: rgba(255,255,255,.10);
+
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.66);
+  --muted2: rgba(255,255,255,.52);
+
+  --border: rgba(255,255,255,.12);
+  --border2: rgba(255,255,255,.18);
+
+  --primary: #c8a246;     /* warm gold */
+  --primary2: #e2c676;
+  --accent: #6ee7ff;      /* cyan */
+  --good: #46f0a6;
+  --warn: #ffbf5c;
+  --bad:  #ff6b6b;
+
+  --focus: rgba(110, 231, 255, .65);
+}
+
+:root[data-theme="light"]{
+  --bg: #fbfbfc;
+  --bg2: #f0f2f7;
+  --panel: rgba(0,0,0,.03);
+  --panel2: rgba(0,0,0,.05);
+  --panel3: rgba(0,0,0,.08);
+
+  --text: rgba(0,0,0,.88);
+  --muted: rgba(0,0,0,.66);
+  --muted2: rgba(0,0,0,.52);
+
+  --border: rgba(0,0,0,.12);
+  --border2: rgba(0,0,0,.18);
+
+  --focus: rgba(0, 123, 255, .35);
+}
+
+/* Base */
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+  background: radial-gradient(1200px 700px at 30% -10%, rgba(110,231,255,.12), transparent 60%),
+              radial-gradient(1000px 500px at 75% 0%, rgba(200,162,70,.13), transparent 55%),
+              linear-gradient(180deg, var(--bg), var(--bg2));
+  min-height: 100vh;
+}
+
+a{ color: inherit; text-decoration: none; }
+a:hover{ text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+code{
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .12rem .38rem;
+}
+
+.sr-only{
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+.skip-link{
+  position: absolute;
+  left: var(--s6);
+  top: var(--s6);
+  transform: translateY(-200%);
+  background: var(--panel3);
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+  padding: var(--s3) var(--s4);
+  box-shadow: var(--sh1);
+  transition: transform var(--dur-2) var(--ease-out);
+  z-index: 9999;
+}
+.skip-link:focus{ transform: translateY(0); }
+
+.container{ width: var(--container); margin: 0 auto; }
+.divider{ height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: var(--s7) 0; }
+.note{ margin-top: var(--s7); padding: var(--s5); border-radius: var(--r2); background: linear-gradient(180deg, var(--panel), transparent); border: 1px solid var(--border); color: var(--muted); }
+
+/* Header */
+.site-header{
+  position: sticky; top: 0; z-index: 30;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner{ display: flex; align-items: center; justify-content: space-between; gap: var(--s5); padding: var(--s5) 0; }
+.header-divider{ height: 1px; background: linear-gradient(90deg, transparent, rgba(200,162,70,.35), rgba(110,231,255,.22), transparent); }
+
+.brand{ display: flex; align-items: center; gap: var(--s4); }
+.brand-mark{
+  width: 42px; height: 42px; border-radius: 14px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.32), transparent 55%),
+              linear-gradient(135deg, rgba(200,162,70,.95), rgba(110,231,255,.65));
+  box-shadow: 0 0 0 1px rgba(255,255,255,.12), var(--sh1);
+}
+.brand-text .brand-name{ font-weight: 780; letter-spacing: .2px; line-height: var(--lh-tight); }
+.brand-text .brand-title{ font-size: var(--text-xs); color: var(--muted); line-height: var(--lh-tight); }
+
+.nav{ display: flex; align-items: center; gap: var(--s4); flex-wrap: wrap; }
+.nav a{ font-size: var(--text-sm); color: var(--muted); padding: .38rem .45rem; border-radius: 10px; }
+.nav a:hover{ color: var(--text); background: var(--panel); text-decoration: none; }
+
+.kbd{
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 28px; padding: 0 .35rem; height: 26px;
+  border-radius: 10px; border: 1px solid var(--border);
+  background: var(--panel2);
+  font-family: var(--font-mono);
+  font-size: .8rem; color: var(--muted);
+}
+
+/* Buttons */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  border-radius: 999px; border: 1px solid var(--border);
+  background: var(--panel); color: var(--text);
+  padding: .62rem 1.0rem;
+  font-weight: 650; letter-spacing: .15px;
+  cursor: pointer;
+  transition: transform var(--dur-1) var(--ease-out), background var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out);
+  user-select: none; text-decoration: none;
+}
+.btn:hover{ transform: translateY(-1px); border-color: var(--border2); background: var(--panel2); text-decoration: none; }
+.btn:active{ transform: translateY(0); }
+.btn.primary{ background: linear-gradient(180deg, rgba(200,162,70,.95), rgba(200,162,70,.62)); border-color: rgba(200,162,70,.55); color: rgba(0,0,0,.92); }
+.btn.primary:hover{ background: linear-gradient(180deg, rgba(226,198,118,.98), rgba(200,162,70,.70)); }
+.btn.ghost{ background: transparent; }
+.btn.tiny{ padding: .4rem .7rem; font-size: .88rem; }
+.btn .btn-label{ display: none; }
+@media (min-width: 880px){ .btn .btn-label{ display: inline; } }
+
+/* Hero */
+.hero{ position: relative; overflow: clip; padding: var(--s10) 0 var(--s9); }
+.hero-grid{ display: grid; gap: var(--s8); grid-template-columns: 1fr; }
+@media (min-width: 980px){ .hero-grid{ grid-template-columns: 1.1fr .9fr; align-items: start; } }
+.hero-copy{ position: relative; z-index: 1; }
+.eyebrow{ color: var(--muted); font-size: var(--text-sm); letter-spacing: .18em; text-transform: uppercase; margin: 0 0 var(--s4); }
+.headline{ margin: 0 0 var(--s4); font-size: clamp(2.0rem, 3.7vw, 3.2rem); line-height: 1.1; letter-spacing: -.02em; }
+.grad{ background: linear-gradient(90deg, var(--primary2), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.subhead{ margin: 0 0 var(--s6); font-size: var(--text-lg); color: var(--muted); max-width: 62ch; }
+.hero-cta{ display: flex; gap: var(--s4); flex-wrap: wrap; margin-bottom: var(--s6); }
+
+.hero-metrics{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s4); margin-top: var(--s4); }
+@media (min-width: 620px){ .hero-metrics{ grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.metric{ padding: var(--s4); border-radius: var(--r2); background: linear-gradient(180deg, var(--panel), transparent); border: 1px solid var(--border); }
+.metric .metric-label{ color: var(--muted); font-size: var(--text-xs); letter-spacing: .08em; text-transform: uppercase; }
+.metric .metric-value{ margin-top: .25rem; font-weight: 800; font-size: var(--text-xl); letter-spacing: -.01em; }
+
+.hero-note{ margin-top: var(--s6); padding: var(--s5); border-radius: var(--r2); border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,.05), transparent); display: flex; gap: var(--s4); align-items: flex-start; }
+.pill{ flex: none; border-radius: 999px; border: 1px solid rgba(200,162,70,.4); color: rgba(226,198,118,.95); background: rgba(200,162,70,.12); font-size: var(--text-xs); letter-spacing: .12em; text-transform: uppercase; padding: .2rem .6rem; margin-top: .15rem; }
+
+.hero-panel{ position: relative; z-index: 1; }
+.hero-bg{ position: absolute; inset: 0; z-index: 0; opacity: .85; pointer-events: none; }
+#starfield{ width: 100%; height: 100%; display: block; }
+
+/* Sections + cards */
+.section{ padding: var(--s10) 0; }
+.section.alt{ background: linear-gradient(180deg, transparent, rgba(255,255,255,.03), transparent); border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); }
+.section-head{ display: grid; gap: var(--s3); margin-bottom: var(--s7); }
+.section-head h2{ margin: 0; font-size: var(--text-3xl); line-height: 1.1; }
+.section-head p{ margin: 0; color: var(--muted); max-width: 85ch; font-size: var(--text-lg); }
+
+.grid{ display: grid; gap: var(--s5); }
+.grid.two{ grid-template-columns: 1fr; }
+.grid.three{ grid-template-columns: 1fr; }
+@media (min-width: 900px){ .grid.two{ grid-template-columns: repeat(2, minmax(0,1fr)); } .grid.three{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+
+.card{ border-radius: var(--r3); background: linear-gradient(180deg, var(--panel), transparent); border: 1px solid var(--border); box-shadow: var(--sh1); overflow: hidden; }
+.card.glass{ background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.12); box-shadow: var(--sh2); }
+.card-head{ display: flex; align-items: baseline; justify-content: space-between; gap: var(--s4); padding: var(--s5) var(--s5) var(--s4); }
+.card-title{ font-weight: 820; letter-spacing: .1px; }
+.card-actions{ display: flex; gap: var(--s3); align-items: center; }
+.card-foot{ padding: var(--s4) var(--s5) var(--s5); display: flex; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; }
+.tiny-muted{ color: var(--muted2); font-size: var(--text-xs); }
+
+/* Experience */
+.role{ display: grid; gap: var(--s4); padding: var(--s5); }
+.role .role-top{ display: flex; align-items: baseline; justify-content: space-between; gap: var(--s4); }
+.role .role-company{ font-weight: 820; font-size: var(--text-xl); line-height: 1.1; }
+.role .role-title{ color: var(--muted); }
+.role .role-meta{ color: var(--muted2); font-size: var(--text-sm); }
+.role ul{ margin: 0; padding-left: 1.1rem; color: var(--muted); }
+.role li{ margin: .4rem 0; }
+
+.badge-row{ display: flex; gap: var(--s3); flex-wrap: wrap; }
+.badge{ font-size: var(--text-xs); padding: .25rem .65rem; border-radius: 999px; border: 1px solid var(--border); background: var(--panel2); color: var(--muted); }
+
+/* Callout */
+.callout{
+  margin-top: var(--s7);
+  padding: var(--s6);
+  border-radius: var(--r3);
+  border: 1px solid rgba(200,162,70,.22);
+  background: radial-gradient(700px 250px at 10% 10%, rgba(200,162,70,.16), transparent 60%),
+              radial-gradient(600px 250px at 90% 30%, rgba(110,231,255,.10), transparent 60%),
+              linear-gradient(180deg, rgba(255,255,255,.05), transparent);
+}
+.callout-title{ font-weight: 860; margin-bottom: var(--s4); }
+.callout-grid{ display: grid; gap: var(--s4); grid-template-columns: 1fr; }
+@media (min-width: 900px){ .callout-grid{ grid-template-columns: repeat(4, minmax(0,1fr)); } }
+.callout-kicker{ font-size: var(--text-xs); color: rgba(226,198,118,.95); letter-spacing: .12em; text-transform: uppercase; }
+.callout-item p{ margin: .35rem 0 0; color: var(--muted); font-size: var(--text-sm); }
+
+/* Toolbar */
+.toolbar{ display: grid; gap: var(--s4); margin-bottom: var(--s6); }
+@media (min-width: 900px){ .toolbar{ grid-template-columns: 1.1fr 1.4fr .6fr; align-items: center; } }
+.search input, .sort select{
+  width: 100%;
+  padding: .85rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel) 70%, transparent);
+  color: var(--text);
+  font-size: var(--text-md);
+}
+.filters{ display: flex; gap: var(--s3); flex-wrap: wrap; }
+.filter-chip{
+  padding: .55rem .8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--muted);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out);
+}
+.filter-chip:hover{ background: var(--panel2); }
+.filter-chip[data-active="1"]{ background: rgba(110,231,255,.12); border-color: rgba(110,231,255,.35); color: var(--text); }
+
+/* Projects */
+.project{ padding: var(--s5); display: grid; gap: var(--s4); }
+.project .project-top{ display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s4); }
+.project .project-name{ font-size: var(--text-xl); font-weight: 850; line-height: 1.1; }
+.project .project-meta{ color: var(--muted2); font-size: var(--text-sm); }
+.project p{ margin: 0; color: var(--muted); }
+.project ul{ margin: 0; padding-left: 1.1rem; color: var(--muted); }
+.project .project-tags{ display: flex; gap: var(--s3); flex-wrap: wrap; }
+.tag{ font-size: var(--text-xs); padding: .2rem .55rem; border-radius: 999px; border: 1px solid var(--border); background: var(--panel2); color: var(--muted); }
+.tag.good{ border-color: rgba(70,240,166,.28); background: rgba(70,240,166,.10); color: rgba(70,240,166,.95); }
+.tag.warn{ border-color: rgba(255,191,92,.28); background: rgba(255,191,92,.10); color: rgba(255,191,92,.95); }
+.tag.bad{  border-color: rgba(255,107,107,.30); background: rgba(255,107,107,.10); color: rgba(255,107,107,.95); }
+.tag.gold{ border-color: rgba(200,162,70,.30); background: rgba(200,162,70,.12); color: rgba(226,198,118,.98); }
+.project .project-actions{ display: flex; gap: var(--s3); flex-wrap: wrap; margin-top: var(--s2); }
+.project .project-actions a{ text-decoration: none; }
+
+/* Ops */
+.ops-grid{ padding: 0 var(--s5) var(--s5); display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--s4); }
+.ops-tile{ border-radius: var(--r2); border: 1px solid var(--border); background: linear-gradient(180deg, var(--panel2), transparent); padding: var(--s4); display: grid; gap: .25rem; min-height: 92px; }
+.ops-k{ color: var(--muted2); font-size: var(--text-xs); letter-spacing: .12em; text-transform: uppercase; }
+.ops-v{ font-weight: 820; letter-spacing: -.01em; }
+.ops-s{ font-family: var(--font-mono); font-size: .84rem; color: var(--muted); }
+.ops-dot{ width: 10px; height: 10px; border-radius: 99px; background: var(--good); box-shadow: 0 0 0 2px rgba(70,240,166,.18); display: inline-block; margin-right: .4rem; transform: translateY(1px); }
+.ops-dot.warn{ background: var(--warn); box-shadow: 0 0 0 2px rgba(255,191,92,.18); }
+.ops-dot.bad{ background: var(--bad); box-shadow: 0 0 0 2px rgba(255,107,107,.18); }
+
+/* Stack */
+.stack{ margin-top: var(--s5); }
+.stack-title{ color: var(--muted2); font-size: var(--text-xs); letter-spacing: .12em; text-transform: uppercase; margin-bottom: var(--s3); }
+.stack-badges{ display: flex; gap: var(--s3); flex-wrap: wrap; }
+.stack-badges .badge{ background: rgba(255,255,255,.05); }
+
+/* Systems diagram */
+.systems{ display: grid; gap: var(--s6); grid-template-columns: 1fr; }
+@media (min-width: 980px){ .systems{ grid-template-columns: 1.2fr .8fr; align-items: start; } }
+.diagram{ padding: var(--s5); overflow: auto; }
+.diagram svg{ width: 100%; min-width: 780px; height: auto; }
+.diagram .node{ cursor: pointer; transition: transform var(--dur-1) var(--ease-out); }
+.diagram .node:hover{ transform: translateY(-1px); }
+.diagram .node[data-focus="1"] .node-rect{ stroke: rgba(110,231,255,.65); stroke-width: 2.5; }
+.diagram .edge{ opacity: .85; }
+.diagram .zone{ opacity: .26; }
+
+.focus{ padding: var(--s5); display: grid; gap: var(--s4); }
+.focus-empty{ color: var(--muted); }
+.focus-title{ font-weight: 860; font-size: var(--text-xl); line-height: 1.1; }
+.focus-sub{ color: var(--muted2); font-size: var(--text-sm); }
+.focus ul{ margin: 0; padding-left: 1.1rem; color: var(--muted); }
+.focus li{ margin: .35rem 0; }
+.controls{ padding: var(--s5); display: flex; gap: var(--s3); flex-wrap: wrap; }
+.sticky{ position: sticky; top: 84px; display: grid; gap: var(--s5); }
+
+/* Impact chart */
+.chart{ padding: var(--s5); }
+.bar{ display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--s4); padding: var(--s3) 0; }
+.bar .bar-label{ color: var(--muted); font-weight: 650; }
+.bar .bar-val{ color: var(--muted2); font-family: var(--font-mono); }
+.bar-track{ grid-column: 1 / -1; height: 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--panel); overflow: hidden; }
+.bar-fill{ height: 100%; width: 40%; border-radius: 999px; background: linear-gradient(90deg, rgba(200,162,70,.88), rgba(110,231,255,.78)); transform-origin: left center; transition: transform var(--dur-4) var(--ease-out); }
+
+/* Timeline */
+.timeline{ padding: var(--s5); display: grid; gap: var(--s4); }
+.t-event{ display: grid; gap: .25rem; padding: var(--s4); border-radius: var(--r2); border: 1px solid var(--border); background: linear-gradient(180deg, var(--panel2), transparent); }
+.t-top{ display: flex; align-items: baseline; justify-content: space-between; gap: var(--s4); }
+.t-title{ font-weight: 820; }
+.t-date{ font-family: var(--font-mono); font-size: .86rem; color: var(--muted2); }
+.t-desc{ color: var(--muted); margin: 0; }
+
+/* Writing */
+.w-item{ padding: var(--s5); display: grid; gap: var(--s3); }
+.w-item h3{ margin: 0; font-size: var(--text-xl); line-height: 1.25; }
+.w-item p{ margin: 0; color: var(--muted); }
+.w-item .w-meta{ font-family: var(--font-mono); font-size: .85rem; color: var(--muted2); }
+
+/* Links */
+.links{ padding: var(--s5); display: grid; gap: var(--s3); }
+.link-row{ display: flex; align-items: center; justify-content: space-between; gap: var(--s4); padding: var(--s4); border-radius: var(--r2); border: 1px solid var(--border); background: linear-gradient(180deg, var(--panel2), transparent); }
+.link-row a{ font-weight: 750; text-decoration: none; }
+.link-row a:hover{ text-decoration: underline; }
+.link-row .link-note{ color: var(--muted2); font-size: var(--text-xs); }
+
+/* Form */
+form{ padding: var(--s5); display: grid; gap: var(--s4); }
+.field{ display: grid; gap: .5rem; }
+label{ font-weight: 650; color: var(--muted); font-size: var(--text-sm); }
+input, textarea{ border-radius: 16px; border: 1px solid var(--border); background: color-mix(in srgb, var(--panel) 70%, transparent); color: var(--text); padding: .85rem 1rem; font-size: var(--text-md); }
+textarea{ resize: vertical; }
+.form-actions{ display: flex; gap: var(--s3); flex-wrap: wrap; }
+
+/* Footer */
+.footer{ margin-top: var(--s8); padding-top: var(--s6); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: var(--s5); flex-wrap: wrap; }
+.footer-title{ font-weight: 880; }
+.footer-sub{ color: var(--muted); font-size: var(--text-sm); }
+
+/* Modal / Command palette */
+.modal{ position: fixed; inset: 0; z-index: 80; }
+.modal-backdrop{ position: absolute; inset: 0; background: rgba(0,0,0,.55); backdrop-filter: blur(6px); }
+.modal-panel{ position: relative; width: min(720px, calc(100% - 2*var(--s6))); margin: 10vh auto 0; }
+.cmdk{ border-radius: 22px; border: 1px solid rgba(255,255,255,.15); background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05)); box-shadow: var(--sh3); overflow: hidden; }
+.cmdk-head{ display: flex; align-items: baseline; justify-content: space-between; padding: var(--s5) var(--s5) var(--s4); }
+.cmdk-title{ font-weight: 880; letter-spacing: .2px; }
+.cmdk-hint{ color: var(--muted2); font-size: var(--text-xs); }
+.cmdk-input{ padding: 0 var(--s5) var(--s4); }
+.cmdk-input input{ width: 100%; border-radius: 16px; }
+.cmdk-list{ max-height: min(52vh, 520px); overflow: auto; padding: var(--s3) var(--s4) var(--s4); }
+.cmdk-item{ display: flex; align-items: center; justify-content: space-between; gap: var(--s4); padding: var(--s4); border-radius: 16px; border: 1px solid transparent; cursor: pointer; user-select: none; }
+.cmdk-item:hover{ background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.10); }
+.cmdk-item[data-active="1"]{ background: rgba(110,231,255,.10); border-color: rgba(110,231,255,.28); }
+.cmdk-left{ display: grid; gap: .15rem; }
+.cmdk-name{ font-weight: 760; }
+.cmdk-desc{ color: var(--muted2); font-size: var(--text-xs); }
+.cmdk-right{ color: var(--muted2); font-family: var(--font-mono); font-size: .82rem; }
+.cmdk-foot{ padding: var(--s4) var(--s5) var(--s5); display: flex; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.10); }
+
+/* Toast */
+.toast{ position: fixed; left: 50%; bottom: var(--s7); transform: translateX(-50%); z-index: 99; background: rgba(0,0,0,.72); border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.92); padding: .75rem 1rem; border-radius: 999px; box-shadow: var(--sh2); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *, *::before, *::after{
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 520px){
+  .brand-title{ display: none; }
+  .headline{ font-size: 2.0rem; }
+  .hero{ padding-top: var(--s9); }
+}
+
+/* ==========================================================================
+   Component Cookbook (examples / extension points)
+   ==========================================================================
+   These classes are intentionally verbose to make this repo feel like a real
+   design system in-progress. You can delete them without breaking the site.
+   ========================================================================== */
+/* Example #001
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-1{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-1 .title{ font-weight: 730; }
+.rhythm-1 .subtitle{ color: var(--muted2); }
+/* Example #002
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-2{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-2 .title{ font-weight: 760; }
+.rhythm-2 .subtitle{ color: var(--muted2); }
+/* Example #003
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-3{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-3 .title{ font-weight: 790; }
+.rhythm-3 .subtitle{ color: var(--muted2); }
+/* Example #004
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-4{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-4 .title{ font-weight: 820; }
+.rhythm-4 .subtitle{ color: var(--muted2); }
+/* Example #005
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-5{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-5 .title{ font-weight: 700; }
+.rhythm-5 .subtitle{ color: var(--muted2); }
+/* Example #006
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-6{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-6 .title{ font-weight: 730; }
+.rhythm-6 .subtitle{ color: var(--muted2); }
+/* Example #007
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-7{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-7 .title{ font-weight: 760; }
+.rhythm-7 .subtitle{ color: var(--muted2); }
+/* Example #008
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-8{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-8 .title{ font-weight: 790; }
+.rhythm-8 .subtitle{ color: var(--muted2); }
+/* Example #009
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-9{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-9 .title{ font-weight: 820; }
+.rhythm-9 .subtitle{ color: var(--muted2); }
+/* Example #010
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-10{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-10 .title{ font-weight: 700; }
+.rhythm-10 .subtitle{ color: var(--muted2); }
+/* Example #011
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-11{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-11 .title{ font-weight: 730; }
+.rhythm-11 .subtitle{ color: var(--muted2); }
+/* Example #012
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-12{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-12 .title{ font-weight: 760; }
+.rhythm-12 .subtitle{ color: var(--muted2); }
+/* Example #013
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-13{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-13 .title{ font-weight: 790; }
+.rhythm-13 .subtitle{ color: var(--muted2); }
+/* Example #014
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-14{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-14 .title{ font-weight: 820; }
+.rhythm-14 .subtitle{ color: var(--muted2); }
+/* Example #015
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-15{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-15 .title{ font-weight: 700; }
+.rhythm-15 .subtitle{ color: var(--muted2); }
+/* Example #016
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-16{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-16 .title{ font-weight: 730; }
+.rhythm-16 .subtitle{ color: var(--muted2); }
+/* Example #017
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-17{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-17 .title{ font-weight: 760; }
+.rhythm-17 .subtitle{ color: var(--muted2); }
+/* Example #018
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-18{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-18 .title{ font-weight: 790; }
+.rhythm-18 .subtitle{ color: var(--muted2); }
+/* Example #019
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-19{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-19 .title{ font-weight: 820; }
+.rhythm-19 .subtitle{ color: var(--muted2); }
+/* Example #020
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-20{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-20 .title{ font-weight: 700; }
+.rhythm-20 .subtitle{ color: var(--muted2); }
+/* Example #021
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-21{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-21 .title{ font-weight: 730; }
+.rhythm-21 .subtitle{ color: var(--muted2); }
+/* Example #022
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-22{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-22 .title{ font-weight: 760; }
+.rhythm-22 .subtitle{ color: var(--muted2); }
+/* Example #023
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-23{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-23 .title{ font-weight: 790; }
+.rhythm-23 .subtitle{ color: var(--muted2); }
+/* Example #024
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-24{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-24 .title{ font-weight: 820; }
+.rhythm-24 .subtitle{ color: var(--muted2); }
+/* Example #025
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-25{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-25 .title{ font-weight: 700; }
+.rhythm-25 .subtitle{ color: var(--muted2); }
+/* Example #026
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-26{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-26 .title{ font-weight: 730; }
+.rhythm-26 .subtitle{ color: var(--muted2); }
+/* Example #027
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-27{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-27 .title{ font-weight: 760; }
+.rhythm-27 .subtitle{ color: var(--muted2); }
+/* Example #028
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-28{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-28 .title{ font-weight: 790; }
+.rhythm-28 .subtitle{ color: var(--muted2); }
+/* Example #029
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-29{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-29 .title{ font-weight: 820; }
+.rhythm-29 .subtitle{ color: var(--muted2); }
+/* Example #030
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-30{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-30 .title{ font-weight: 700; }
+.rhythm-30 .subtitle{ color: var(--muted2); }
+/* Example #031
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-31{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-31 .title{ font-weight: 730; }
+.rhythm-31 .subtitle{ color: var(--muted2); }
+/* Example #032
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-32{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-32 .title{ font-weight: 760; }
+.rhythm-32 .subtitle{ color: var(--muted2); }
+/* Example #033
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-33{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-33 .title{ font-weight: 790; }
+.rhythm-33 .subtitle{ color: var(--muted2); }
+/* Example #034
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-34{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-34 .title{ font-weight: 820; }
+.rhythm-34 .subtitle{ color: var(--muted2); }
+/* Example #035
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-35{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-35 .title{ font-weight: 700; }
+.rhythm-35 .subtitle{ color: var(--muted2); }
+/* Example #036
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-36{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-36 .title{ font-weight: 730; }
+.rhythm-36 .subtitle{ color: var(--muted2); }
+/* Example #037
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-37{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-37 .title{ font-weight: 760; }
+.rhythm-37 .subtitle{ color: var(--muted2); }
+/* Example #038
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-38{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-38 .title{ font-weight: 790; }
+.rhythm-38 .subtitle{ color: var(--muted2); }
+/* Example #039
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-39{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-39 .title{ font-weight: 820; }
+.rhythm-39 .subtitle{ color: var(--muted2); }
+/* Example #040
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-40{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-40 .title{ font-weight: 700; }
+.rhythm-40 .subtitle{ color: var(--muted2); }
+/* Example #041
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-41{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-41 .title{ font-weight: 730; }
+.rhythm-41 .subtitle{ color: var(--muted2); }
+/* Example #042
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-42{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-42 .title{ font-weight: 760; }
+.rhythm-42 .subtitle{ color: var(--muted2); }
+/* Example #043
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-43{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-43 .title{ font-weight: 790; }
+.rhythm-43 .subtitle{ color: var(--muted2); }
+/* Example #044
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-44{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-44 .title{ font-weight: 820; }
+.rhythm-44 .subtitle{ color: var(--muted2); }
+/* Example #045
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-45{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-45 .title{ font-weight: 700; }
+.rhythm-45 .subtitle{ color: var(--muted2); }
+/* Example #046
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-46{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-46 .title{ font-weight: 730; }
+.rhythm-46 .subtitle{ color: var(--muted2); }
+/* Example #047
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-47{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-47 .title{ font-weight: 760; }
+.rhythm-47 .subtitle{ color: var(--muted2); }
+/* Example #048
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-48{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-48 .title{ font-weight: 790; }
+.rhythm-48 .subtitle{ color: var(--muted2); }
+/* Example #049
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-49{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-49 .title{ font-weight: 820; }
+.rhythm-49 .subtitle{ color: var(--muted2); }
+/* Example #050
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-50{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-50 .title{ font-weight: 700; }
+.rhythm-50 .subtitle{ color: var(--muted2); }
+/* Example #051
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-51{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-51 .title{ font-weight: 730; }
+.rhythm-51 .subtitle{ color: var(--muted2); }
+/* Example #052
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-52{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-52 .title{ font-weight: 760; }
+.rhythm-52 .subtitle{ color: var(--muted2); }
+/* Example #053
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-53{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-53 .title{ font-weight: 790; }
+.rhythm-53 .subtitle{ color: var(--muted2); }
+/* Example #054
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-54{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-54 .title{ font-weight: 820; }
+.rhythm-54 .subtitle{ color: var(--muted2); }
+/* Example #055
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-55{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-55 .title{ font-weight: 700; }
+.rhythm-55 .subtitle{ color: var(--muted2); }
+/* Example #056
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-56{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-56 .title{ font-weight: 730; }
+.rhythm-56 .subtitle{ color: var(--muted2); }
+/* Example #057
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-57{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-57 .title{ font-weight: 760; }
+.rhythm-57 .subtitle{ color: var(--muted2); }
+/* Example #058
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-58{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-58 .title{ font-weight: 790; }
+.rhythm-58 .subtitle{ color: var(--muted2); }
+/* Example #059
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-59{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-59 .title{ font-weight: 820; }
+.rhythm-59 .subtitle{ color: var(--muted2); }
+/* Example #060
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-60{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-60 .title{ font-weight: 700; }
+.rhythm-60 .subtitle{ color: var(--muted2); }
+/* Example #061
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-61{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-61 .title{ font-weight: 730; }
+.rhythm-61 .subtitle{ color: var(--muted2); }
+/* Example #062
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-62{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-62 .title{ font-weight: 760; }
+.rhythm-62 .subtitle{ color: var(--muted2); }
+/* Example #063
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-63{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-63 .title{ font-weight: 790; }
+.rhythm-63 .subtitle{ color: var(--muted2); }
+/* Example #064
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-64{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-64 .title{ font-weight: 820; }
+.rhythm-64 .subtitle{ color: var(--muted2); }
+/* Example #065
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-65{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-65 .title{ font-weight: 700; }
+.rhythm-65 .subtitle{ color: var(--muted2); }
+/* Example #066
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-66{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-66 .title{ font-weight: 730; }
+.rhythm-66 .subtitle{ color: var(--muted2); }
+/* Example #067
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-67{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-67 .title{ font-weight: 760; }
+.rhythm-67 .subtitle{ color: var(--muted2); }
+/* Example #068
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-68{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-68 .title{ font-weight: 790; }
+.rhythm-68 .subtitle{ color: var(--muted2); }
+/* Example #069
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-69{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-69 .title{ font-weight: 820; }
+.rhythm-69 .subtitle{ color: var(--muted2); }
+/* Example #070
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-70{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-70 .title{ font-weight: 700; }
+.rhythm-70 .subtitle{ color: var(--muted2); }
+/* Example #071
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-71{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-71 .title{ font-weight: 730; }
+.rhythm-71 .subtitle{ color: var(--muted2); }
+/* Example #072
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-72{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-72 .title{ font-weight: 760; }
+.rhythm-72 .subtitle{ color: var(--muted2); }
+/* Example #073
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-73{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-73 .title{ font-weight: 790; }
+.rhythm-73 .subtitle{ color: var(--muted2); }
+/* Example #074
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-74{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-74 .title{ font-weight: 820; }
+.rhythm-74 .subtitle{ color: var(--muted2); }
+/* Example #075
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-75{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-75 .title{ font-weight: 700; }
+.rhythm-75 .subtitle{ color: var(--muted2); }
+/* Example #076
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-76{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-76 .title{ font-weight: 730; }
+.rhythm-76 .subtitle{ color: var(--muted2); }
+/* Example #077
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-77{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-77 .title{ font-weight: 760; }
+.rhythm-77 .subtitle{ color: var(--muted2); }
+/* Example #078
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-78{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-78 .title{ font-weight: 790; }
+.rhythm-78 .subtitle{ color: var(--muted2); }
+/* Example #079
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-79{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-79 .title{ font-weight: 820; }
+.rhythm-79 .subtitle{ color: var(--muted2); }
+/* Example #080
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-80{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-80 .title{ font-weight: 700; }
+.rhythm-80 .subtitle{ color: var(--muted2); }
+/* Example #081
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-81{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-81 .title{ font-weight: 730; }
+.rhythm-81 .subtitle{ color: var(--muted2); }
+/* Example #082
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-82{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-82 .title{ font-weight: 760; }
+.rhythm-82 .subtitle{ color: var(--muted2); }
+/* Example #083
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-83{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-83 .title{ font-weight: 790; }
+.rhythm-83 .subtitle{ color: var(--muted2); }
+/* Example #084
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-84{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-84 .title{ font-weight: 820; }
+.rhythm-84 .subtitle{ color: var(--muted2); }
+/* Example #085
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-85{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-85 .title{ font-weight: 700; }
+.rhythm-85 .subtitle{ color: var(--muted2); }
+/* Example #086
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-86{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-86 .title{ font-weight: 730; }
+.rhythm-86 .subtitle{ color: var(--muted2); }
+/* Example #087
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-87{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-87 .title{ font-weight: 760; }
+.rhythm-87 .subtitle{ color: var(--muted2); }
+/* Example #088
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-88{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-88 .title{ font-weight: 790; }
+.rhythm-88 .subtitle{ color: var(--muted2); }
+/* Example #089
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-89{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-89 .title{ font-weight: 820; }
+.rhythm-89 .subtitle{ color: var(--muted2); }
+/* Example #090
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-90{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-90 .title{ font-weight: 700; }
+.rhythm-90 .subtitle{ color: var(--muted2); }
+/* Example #091
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-91{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-91 .title{ font-weight: 730; }
+.rhythm-91 .subtitle{ color: var(--muted2); }
+/* Example #092
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-92{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-92 .title{ font-weight: 760; }
+.rhythm-92 .subtitle{ color: var(--muted2); }
+/* Example #093
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-93{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-93 .title{ font-weight: 790; }
+.rhythm-93 .subtitle{ color: var(--muted2); }
+/* Example #094
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-94{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-94 .title{ font-weight: 820; }
+.rhythm-94 .subtitle{ color: var(--muted2); }
+/* Example #095
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-95{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-95 .title{ font-weight: 700; }
+.rhythm-95 .subtitle{ color: var(--muted2); }
+/* Example #096
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-96{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-96 .title{ font-weight: 730; }
+.rhythm-96 .subtitle{ color: var(--muted2); }
+/* Example #097
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-97{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-97 .title{ font-weight: 760; }
+.rhythm-97 .subtitle{ color: var(--muted2); }
+/* Example #098
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-98{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-98 .title{ font-weight: 790; }
+.rhythm-98 .subtitle{ color: var(--muted2); }
+/* Example #099
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-99{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-99 .title{ font-weight: 820; }
+.rhythm-99 .subtitle{ color: var(--muted2); }
+/* Example #100
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-100{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-100 .title{ font-weight: 700; }
+.rhythm-100 .subtitle{ color: var(--muted2); }
+/* Example #101
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-101{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-101 .title{ font-weight: 730; }
+.rhythm-101 .subtitle{ color: var(--muted2); }
+/* Example #102
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-102{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-102 .title{ font-weight: 760; }
+.rhythm-102 .subtitle{ color: var(--muted2); }
+/* Example #103
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-103{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-103 .title{ font-weight: 790; }
+.rhythm-103 .subtitle{ color: var(--muted2); }
+/* Example #104
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-104{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-104 .title{ font-weight: 820; }
+.rhythm-104 .subtitle{ color: var(--muted2); }
+/* Example #105
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-105{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-105 .title{ font-weight: 700; }
+.rhythm-105 .subtitle{ color: var(--muted2); }
+/* Example #106
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-106{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-106 .title{ font-weight: 730; }
+.rhythm-106 .subtitle{ color: var(--muted2); }
+/* Example #107
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-107{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-107 .title{ font-weight: 760; }
+.rhythm-107 .subtitle{ color: var(--muted2); }
+/* Example #108
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-108{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-108 .title{ font-weight: 790; }
+.rhythm-108 .subtitle{ color: var(--muted2); }
+/* Example #109
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-109{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-109 .title{ font-weight: 820; }
+.rhythm-109 .subtitle{ color: var(--muted2); }
+/* Example #110
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-110{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-110 .title{ font-weight: 700; }
+.rhythm-110 .subtitle{ color: var(--muted2); }
+/* Example #111
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-111{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-111 .title{ font-weight: 730; }
+.rhythm-111 .subtitle{ color: var(--muted2); }
+/* Example #112
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-112{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-112 .title{ font-weight: 760; }
+.rhythm-112 .subtitle{ color: var(--muted2); }
+/* Example #113
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-113{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-113 .title{ font-weight: 790; }
+.rhythm-113 .subtitle{ color: var(--muted2); }
+/* Example #114
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-114{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-114 .title{ font-weight: 820; }
+.rhythm-114 .subtitle{ color: var(--muted2); }
+/* Example #115
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-115{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-115 .title{ font-weight: 700; }
+.rhythm-115 .subtitle{ color: var(--muted2); }
+/* Example #116
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-116{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-116 .title{ font-weight: 730; }
+.rhythm-116 .subtitle{ color: var(--muted2); }
+/* Example #117
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-117{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-117 .title{ font-weight: 760; }
+.rhythm-117 .subtitle{ color: var(--muted2); }
+/* Example #118
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-118{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-118 .title{ font-weight: 790; }
+.rhythm-118 .subtitle{ color: var(--muted2); }
+/* Example #119
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-119{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-119 .title{ font-weight: 820; }
+.rhythm-119 .subtitle{ color: var(--muted2); }
+/* Example #120
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-120{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-120 .title{ font-weight: 700; }
+.rhythm-120 .subtitle{ color: var(--muted2); }
+/* Example #121
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-121{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-121 .title{ font-weight: 730; }
+.rhythm-121 .subtitle{ color: var(--muted2); }
+/* Example #122
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-122{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-122 .title{ font-weight: 760; }
+.rhythm-122 .subtitle{ color: var(--muted2); }
+/* Example #123
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-123{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-123 .title{ font-weight: 790; }
+.rhythm-123 .subtitle{ color: var(--muted2); }
+/* Example #124
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-124{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-124 .title{ font-weight: 820; }
+.rhythm-124 .subtitle{ color: var(--muted2); }
+/* Example #125
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-125{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-125 .title{ font-weight: 700; }
+.rhythm-125 .subtitle{ color: var(--muted2); }
+/* Example #126
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-126{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-126 .title{ font-weight: 730; }
+.rhythm-126 .subtitle{ color: var(--muted2); }
+/* Example #127
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-127{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-127 .title{ font-weight: 760; }
+.rhythm-127 .subtitle{ color: var(--muted2); }
+/* Example #128
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-128{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-128 .title{ font-weight: 790; }
+.rhythm-128 .subtitle{ color: var(--muted2); }
+/* Example #129
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-129{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-129 .title{ font-weight: 820; }
+.rhythm-129 .subtitle{ color: var(--muted2); }
+/* Example #130
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-130{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-130 .title{ font-weight: 700; }
+.rhythm-130 .subtitle{ color: var(--muted2); }
+/* Example #131
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-131{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-131 .title{ font-weight: 730; }
+.rhythm-131 .subtitle{ color: var(--muted2); }
+/* Example #132
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-132{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-132 .title{ font-weight: 760; }
+.rhythm-132 .subtitle{ color: var(--muted2); }
+/* Example #133
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-133{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-133 .title{ font-weight: 790; }
+.rhythm-133 .subtitle{ color: var(--muted2); }
+/* Example #134
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-134{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-134 .title{ font-weight: 820; }
+.rhythm-134 .subtitle{ color: var(--muted2); }
+/* Example #135
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-135{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-135 .title{ font-weight: 700; }
+.rhythm-135 .subtitle{ color: var(--muted2); }
+/* Example #136
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-136{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-136 .title{ font-weight: 730; }
+.rhythm-136 .subtitle{ color: var(--muted2); }
+/* Example #137
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-137{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-137 .title{ font-weight: 760; }
+.rhythm-137 .subtitle{ color: var(--muted2); }
+/* Example #138
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-138{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-138 .title{ font-weight: 790; }
+.rhythm-138 .subtitle{ color: var(--muted2); }
+/* Example #139
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-139{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-139 .title{ font-weight: 820; }
+.rhythm-139 .subtitle{ color: var(--muted2); }
+/* Example #140
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-140{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-140 .title{ font-weight: 700; }
+.rhythm-140 .subtitle{ color: var(--muted2); }
+/* Example #141
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-141{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-141 .title{ font-weight: 730; }
+.rhythm-141 .subtitle{ color: var(--muted2); }
+/* Example #142
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-142{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-142 .title{ font-weight: 760; }
+.rhythm-142 .subtitle{ color: var(--muted2); }
+/* Example #143
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-143{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-143 .title{ font-weight: 790; }
+.rhythm-143 .subtitle{ color: var(--muted2); }
+/* Example #144
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-144{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-144 .title{ font-weight: 820; }
+.rhythm-144 .subtitle{ color: var(--muted2); }
+/* Example #145
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-145{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-145 .title{ font-weight: 700; }
+.rhythm-145 .subtitle{ color: var(--muted2); }
+/* Example #146
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-146{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-146 .title{ font-weight: 730; }
+.rhythm-146 .subtitle{ color: var(--muted2); }
+/* Example #147
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-147{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-147 .title{ font-weight: 760; }
+.rhythm-147 .subtitle{ color: var(--muted2); }
+/* Example #148
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-148{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-148 .title{ font-weight: 790; }
+.rhythm-148 .subtitle{ color: var(--muted2); }
+/* Example #149
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-149{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-149 .title{ font-weight: 820; }
+.rhythm-149 .subtitle{ color: var(--muted2); }
+/* Example #150
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-150{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-150 .title{ font-weight: 700; }
+.rhythm-150 .subtitle{ color: var(--muted2); }
+/* Example #151
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-151{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-151 .title{ font-weight: 730; }
+.rhythm-151 .subtitle{ color: var(--muted2); }
+/* Example #152
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-152{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-152 .title{ font-weight: 760; }
+.rhythm-152 .subtitle{ color: var(--muted2); }
+/* Example #153
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-153{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-153 .title{ font-weight: 790; }
+.rhythm-153 .subtitle{ color: var(--muted2); }
+/* Example #154
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-154{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-154 .title{ font-weight: 820; }
+.rhythm-154 .subtitle{ color: var(--muted2); }
+/* Example #155
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-155{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-155 .title{ font-weight: 700; }
+.rhythm-155 .subtitle{ color: var(--muted2); }
+/* Example #156
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-156{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-156 .title{ font-weight: 730; }
+.rhythm-156 .subtitle{ color: var(--muted2); }
+/* Example #157
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-157{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-157 .title{ font-weight: 760; }
+.rhythm-157 .subtitle{ color: var(--muted2); }
+/* Example #158
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-158{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-158 .title{ font-weight: 790; }
+.rhythm-158 .subtitle{ color: var(--muted2); }
+/* Example #159
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-159{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-159 .title{ font-weight: 820; }
+.rhythm-159 .subtitle{ color: var(--muted2); }
+/* Example #160
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-160{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-160 .title{ font-weight: 700; }
+.rhythm-160 .subtitle{ color: var(--muted2); }
+/* Example #161
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-161{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-161 .title{ font-weight: 730; }
+.rhythm-161 .subtitle{ color: var(--muted2); }
+/* Example #162
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-162{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-162 .title{ font-weight: 760; }
+.rhythm-162 .subtitle{ color: var(--muted2); }
+/* Example #163
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-163{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-163 .title{ font-weight: 790; }
+.rhythm-163 .subtitle{ color: var(--muted2); }
+/* Example #164
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-164{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-164 .title{ font-weight: 820; }
+.rhythm-164 .subtitle{ color: var(--muted2); }
+/* Example #165
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-165{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-165 .title{ font-weight: 700; }
+.rhythm-165 .subtitle{ color: var(--muted2); }
+/* Example #166
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-166{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-166 .title{ font-weight: 730; }
+.rhythm-166 .subtitle{ color: var(--muted2); }
+/* Example #167
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-167{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-167 .title{ font-weight: 760; }
+.rhythm-167 .subtitle{ color: var(--muted2); }
+/* Example #168
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-168{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-168 .title{ font-weight: 790; }
+.rhythm-168 .subtitle{ color: var(--muted2); }
+/* Example #169
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-169{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-169 .title{ font-weight: 820; }
+.rhythm-169 .subtitle{ color: var(--muted2); }
+/* Example #170
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-170{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-170 .title{ font-weight: 700; }
+.rhythm-170 .subtitle{ color: var(--muted2); }
+/* Example #171
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-171{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-171 .title{ font-weight: 730; }
+.rhythm-171 .subtitle{ color: var(--muted2); }
+/* Example #172
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-172{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-172 .title{ font-weight: 760; }
+.rhythm-172 .subtitle{ color: var(--muted2); }
+/* Example #173
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-173{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-173 .title{ font-weight: 790; }
+.rhythm-173 .subtitle{ color: var(--muted2); }
+/* Example #174
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-174{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-174 .title{ font-weight: 820; }
+.rhythm-174 .subtitle{ color: var(--muted2); }
+/* Example #175
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-175{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-175 .title{ font-weight: 700; }
+.rhythm-175 .subtitle{ color: var(--muted2); }
+/* Example #176
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-176{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-176 .title{ font-weight: 730; }
+.rhythm-176 .subtitle{ color: var(--muted2); }
+/* Example #177
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-177{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-177 .title{ font-weight: 760; }
+.rhythm-177 .subtitle{ color: var(--muted2); }
+/* Example #178
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-178{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-178 .title{ font-weight: 790; }
+.rhythm-178 .subtitle{ color: var(--muted2); }
+/* Example #179
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-179{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-179 .title{ font-weight: 820; }
+.rhythm-179 .subtitle{ color: var(--muted2); }
+/* Example #180
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-180{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-180 .title{ font-weight: 700; }
+.rhythm-180 .subtitle{ color: var(--muted2); }
+/* Example #181
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-181{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-181 .title{ font-weight: 730; }
+.rhythm-181 .subtitle{ color: var(--muted2); }
+/* Example #182
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-182{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-182 .title{ font-weight: 760; }
+.rhythm-182 .subtitle{ color: var(--muted2); }
+/* Example #183
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-183{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-183 .title{ font-weight: 790; }
+.rhythm-183 .subtitle{ color: var(--muted2); }
+/* Example #184
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-184{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-184 .title{ font-weight: 820; }
+.rhythm-184 .subtitle{ color: var(--muted2); }
+/* Example #185
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-185{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-185 .title{ font-weight: 700; }
+.rhythm-185 .subtitle{ color: var(--muted2); }
+/* Example #186
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-186{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-186 .title{ font-weight: 730; }
+.rhythm-186 .subtitle{ color: var(--muted2); }
+/* Example #187
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-187{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-187 .title{ font-weight: 760; }
+.rhythm-187 .subtitle{ color: var(--muted2); }
+/* Example #188
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-188{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-188 .title{ font-weight: 790; }
+.rhythm-188 .subtitle{ color: var(--muted2); }
+/* Example #189
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-189{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-189 .title{ font-weight: 820; }
+.rhythm-189 .subtitle{ color: var(--muted2); }
+/* Example #190
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-190{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-190 .title{ font-weight: 700; }
+.rhythm-190 .subtitle{ color: var(--muted2); }
+/* Example #191
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-191{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-191 .title{ font-weight: 730; }
+.rhythm-191 .subtitle{ color: var(--muted2); }
+/* Example #192
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-192{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-192 .title{ font-weight: 760; }
+.rhythm-192 .subtitle{ color: var(--muted2); }
+/* Example #193
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-193{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-193 .title{ font-weight: 790; }
+.rhythm-193 .subtitle{ color: var(--muted2); }
+/* Example #194
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-194{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-194 .title{ font-weight: 820; }
+.rhythm-194 .subtitle{ color: var(--muted2); }
+/* Example #195
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-195{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-195 .title{ font-weight: 700; }
+.rhythm-195 .subtitle{ color: var(--muted2); }
+/* Example #196
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-196{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-196 .title{ font-weight: 730; }
+.rhythm-196 .subtitle{ color: var(--muted2); }
+/* Example #197
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-197{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-197 .title{ font-weight: 760; }
+.rhythm-197 .subtitle{ color: var(--muted2); }
+/* Example #198
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-198{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-198 .title{ font-weight: 790; }
+.rhythm-198 .subtitle{ color: var(--muted2); }
+/* Example #199
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-199{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-199 .title{ font-weight: 820; }
+.rhythm-199 .subtitle{ color: var(--muted2); }
+/* Example #200
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-200{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-200 .title{ font-weight: 700; }
+.rhythm-200 .subtitle{ color: var(--muted2); }
+/* Example #201
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-201{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-201 .title{ font-weight: 730; }
+.rhythm-201 .subtitle{ color: var(--muted2); }
+/* Example #202
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-202{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-202 .title{ font-weight: 760; }
+.rhythm-202 .subtitle{ color: var(--muted2); }
+/* Example #203
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-203{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-203 .title{ font-weight: 790; }
+.rhythm-203 .subtitle{ color: var(--muted2); }
+/* Example #204
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-204{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-204 .title{ font-weight: 820; }
+.rhythm-204 .subtitle{ color: var(--muted2); }
+/* Example #205
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-205{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-205 .title{ font-weight: 700; }
+.rhythm-205 .subtitle{ color: var(--muted2); }
+/* Example #206
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-206{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-206 .title{ font-weight: 730; }
+.rhythm-206 .subtitle{ color: var(--muted2); }
+/* Example #207
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-207{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-207 .title{ font-weight: 760; }
+.rhythm-207 .subtitle{ color: var(--muted2); }
+/* Example #208
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-208{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-208 .title{ font-weight: 790; }
+.rhythm-208 .subtitle{ color: var(--muted2); }
+/* Example #209
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-209{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-209 .title{ font-weight: 820; }
+.rhythm-209 .subtitle{ color: var(--muted2); }
+/* Example #210
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-210{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-210 .title{ font-weight: 700; }
+.rhythm-210 .subtitle{ color: var(--muted2); }
+/* Example #211
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-211{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-211 .title{ font-weight: 730; }
+.rhythm-211 .subtitle{ color: var(--muted2); }
+/* Example #212
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-212{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-212 .title{ font-weight: 760; }
+.rhythm-212 .subtitle{ color: var(--muted2); }
+/* Example #213
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-213{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-213 .title{ font-weight: 790; }
+.rhythm-213 .subtitle{ color: var(--muted2); }
+/* Example #214
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-214{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-214 .title{ font-weight: 820; }
+.rhythm-214 .subtitle{ color: var(--muted2); }
+/* Example #215
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-215{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-215 .title{ font-weight: 700; }
+.rhythm-215 .subtitle{ color: var(--muted2); }
+/* Example #216
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-216{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-216 .title{ font-weight: 730; }
+.rhythm-216 .subtitle{ color: var(--muted2); }
+/* Example #217
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-217{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-217 .title{ font-weight: 760; }
+.rhythm-217 .subtitle{ color: var(--muted2); }
+/* Example #218
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-218{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-218 .title{ font-weight: 790; }
+.rhythm-218 .subtitle{ color: var(--muted2); }
+/* Example #219
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-219{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-219 .title{ font-weight: 820; }
+.rhythm-219 .subtitle{ color: var(--muted2); }
+/* Example #220
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-220{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-220 .title{ font-weight: 700; }
+.rhythm-220 .subtitle{ color: var(--muted2); }
+/* Example #221
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-221{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-221 .title{ font-weight: 730; }
+.rhythm-221 .subtitle{ color: var(--muted2); }
+/* Example #222
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-222{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-222 .title{ font-weight: 760; }
+.rhythm-222 .subtitle{ color: var(--muted2); }
+/* Example #223
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-223{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-223 .title{ font-weight: 790; }
+.rhythm-223 .subtitle{ color: var(--muted2); }
+/* Example #224
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-224{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-224 .title{ font-weight: 820; }
+.rhythm-224 .subtitle{ color: var(--muted2); }
+/* Example #225
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-225{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-225 .title{ font-weight: 700; }
+.rhythm-225 .subtitle{ color: var(--muted2); }
+/* Example #226
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-226{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-226 .title{ font-weight: 730; }
+.rhythm-226 .subtitle{ color: var(--muted2); }
+/* Example #227
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-227{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-227 .title{ font-weight: 760; }
+.rhythm-227 .subtitle{ color: var(--muted2); }
+/* Example #228
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-228{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-228 .title{ font-weight: 790; }
+.rhythm-228 .subtitle{ color: var(--muted2); }
+/* Example #229
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-229{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-229 .title{ font-weight: 820; }
+.rhythm-229 .subtitle{ color: var(--muted2); }
+/* Example #230
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-230{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-230 .title{ font-weight: 700; }
+.rhythm-230 .subtitle{ color: var(--muted2); }
+/* Example #231
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-231{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-231 .title{ font-weight: 730; }
+.rhythm-231 .subtitle{ color: var(--muted2); }
+/* Example #232
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-232{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-232 .title{ font-weight: 760; }
+.rhythm-232 .subtitle{ color: var(--muted2); }
+/* Example #233
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-233{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-233 .title{ font-weight: 790; }
+.rhythm-233 .subtitle{ color: var(--muted2); }
+/* Example #234
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-234{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-234 .title{ font-weight: 820; }
+.rhythm-234 .subtitle{ color: var(--muted2); }
+/* Example #235
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-235{ padding: calc(var(--s2) + 0.125rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-235 .title{ font-weight: 700; }
+.rhythm-235 .subtitle{ color: var(--muted2); }
+/* Example #236
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-236{ padding: calc(var(--s2) + 0.250rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-236 .title{ font-weight: 730; }
+.rhythm-236 .subtitle{ color: var(--muted2); }
+/* Example #237
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-237{ padding: calc(var(--s2) + 0.375rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-237 .title{ font-weight: 760; }
+.rhythm-237 .subtitle{ color: var(--muted2); }
+/* Example #238
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-238{ padding: calc(var(--s2) + 0.500rem); border-radius: calc(var(--r1) + 2px); }
+.rhythm-238 .title{ font-weight: 790; }
+.rhythm-238 .subtitle{ color: var(--muted2); }
+/* Example #239
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-239{ padding: calc(var(--s2) + 0.625rem); border-radius: calc(var(--r1) + 4px); }
+.rhythm-239 .title{ font-weight: 820; }
+.rhythm-239 .subtitle{ color: var(--muted2); }
+/* Example #240
+   - Use this as a pattern for adding new components consistently.
+   - Keep tokens stable; extend via composition.
+*/
+.rhythm-240{ padding: calc(var(--s2) + 0.000rem); border-radius: calc(var(--r1) + 0px); }
+.rhythm-240 .title{ font-weight: 700; }
+.rhythm-240 .subtitle{ color: var(--muted2); }

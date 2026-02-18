@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="Tyler Seder — Technology Experience Architect — Identity, Security, Automation, and High-Touch IT Operations." />
+  <meta property="og:title" content="Tyler Seder — Technology Experience Architect" />
+  <meta property="og:description" content="A senior-architect-level portfolio built like a product: systems, security, automation, and outcomes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-image.svg" />
+  <meta property="og:url" content="https://tylerseder.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <title>Tyler Seder — Technology Experience Architect</title>
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    // Early theme init to avoid flash.
+    (function () {
+      try {
+        const saved = localStorage.getItem("ts_theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = saved || (prefersDark ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-text">
+          <div class="brand-name">Tyler Seder</div>
+          <div class="brand-title">Technology Experience Architect</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#systems">Systems</a>
+        <a href="#impact">Impact</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+        <button class="btn ghost" id="cmdkBtn" type="button" aria-haspopup="dialog" aria-controls="commandPalette">
+          <span class="kbd">Ctrl</span><span class="kbd">K</span>
+          <span class="btn-label">Command</span>
+        </button>
+        <button class="btn ghost" id="themeToggle" type="button" aria-label="Toggle theme">
+          <span class="icon" aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </div>
+    <div class="header-divider" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Identity · Security · Automation · Operations</p>
+          <h1 class="headline">
+            I design <span class="grad">systems</span> that make organizations faster,
+            safer, and calmer — by turning chaos into clear workflows.
+          </h1>
+          <p class="subhead">
+            I lead high-stakes IT + security work across Microsoft 365, Entra ID,
+            Google Workspace, DNS/email deliverability, and a modern internal tooling stack
+            (PowerShell + Graph + lightweight web apps). I build with a “product mindset”:
+            measurable outcomes, documentation, guardrails, and UX.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="#projects">See flagship work</a>
+            <a class="btn" href="#contact">Work with me</a>
+            <a class="btn ghost" href="#systems">View systems map</a>
+          </div>
+
+          <div class="hero-metrics" id="heroMetrics" aria-label="Highlights">
+            <!-- injected -->
+          </div>
+
+          <div class="hero-note">
+            <div class="pill">Now</div>
+            <p>
+              Building a Zero Trust roadmap, consolidating identity, and shipping internal tools
+              that reduce onboarding/offboarding time from hours to minutes.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="card glass">
+            <div class="card-head">
+              <div class="card-title">Ops Console</div>
+              <div class="card-actions">
+                <button class="btn tiny ghost" id="demoPulse" type="button" title="Demo health pulse">Pulse</button>
+                <button class="btn tiny ghost" id="demoIncident" type="button" title="Demo incident timeline">Incident</button>
+              </div>
+            </div>
+
+            <div class="ops-grid" id="opsGrid">
+              <!-- injected -->
+            </div>
+
+            <div class="card-foot">
+              <div class="tiny-muted">Built like a real dashboard: data-driven, keyboard-friendly, resilient.</div>
+              <div class="tiny-muted">Tip: Press <span class="kbd">Ctrl</span> + <span class="kbd">K</span>.</div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="stack-title">Primary Stack</div>
+            <div class="stack-badges" id="stackBadges"><!-- injected --></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-bg" aria-hidden="true">
+        <canvas id="starfield" width="1280" height="720"></canvas>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head">
+          <h2>Work</h2>
+          <p>A snapshot of roles, responsibilities, and systems I own end-to-end — from strategy to implementation to operational excellence.</p>
+        </div>
+
+        <div class="grid two" id="experienceGrid"><!-- injected --></div>
+
+        <div class="callout">
+          <div class="callout-title">How I operate</div>
+          <div class="callout-grid">
+            <div class="callout-item">
+              <div class="callout-kicker">Architecture</div>
+              <p>I draw the boundaries: identity, data, devices, and apps — then enforce with policy.</p>
+            </div>
+            <div class="callout-item">
+              <div class="callout-kicker">Automation</div>
+              <p>Anything repeatable becomes a script, a workflow, or a small internal app.</p>
+            </div>
+            <div class="callout-item">
+              <div class="callout-kicker">Security</div>
+              <p>Zero Trust posture: least privilege, MFA, CA, logging, incident playbooks.</p>
+            </div>
+            <div class="callout-item">
+              <div class="callout-kicker">Experience</div>
+              <p>“Ritz-Carlton-grade” internal UX: clear docs, predictable flows, fewer surprises.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Flagship projects</h2>
+          <p>These are the systems I’ve built or led — with real constraints, real stakeholders, and measurable outcomes.</p>
+        </div>
+
+        <div class="toolbar" role="region" aria-label="Project filters">
+          <div class="search">
+            <label class="sr-only" for="projectSearch">Search projects</label>
+            <input id="projectSearch" type="search" placeholder="Search: Entra, DNS, automation, dashboards..." autocomplete="off" />
+          </div>
+
+          <div class="filters" id="projectFilters"><!-- injected --></div>
+
+          <div class="sort">
+            <label class="sr-only" for="projectSort">Sort</label>
+            <select id="projectSort">
+              <option value="featured">Featured</option>
+              <option value="recent">Most recent</option>
+              <option value="impact">Highest impact</option>
+              <option value="complexity">Highest complexity</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid three" id="projectGrid"><!-- injected --></div>
+
+        <div class="section-foot">
+          <div class="note">Want a deeper dive? Open the command palette (<span class="kbd">Ctrl</span> + <span class="kbd">K</span>) and search “case”.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="systems">
+      <div class="container">
+        <div class="section-head">
+          <h2>Systems map</h2>
+          <p>A visual model of how identity, email, endpoints, and SaaS tools connect — including security boundaries and “blast-radius” thinking.</p>
+        </div>
+
+        <div class="systems">
+          <div class="systems-left">
+            <div class="card">
+              <div class="card-head">
+                <div class="card-title">Architecture diagram</div>
+                <div class="tiny-muted">Interactive · Hover nodes · Click to focus</div>
+              </div>
+              <div class="diagram" id="systemsDiagram" role="img" aria-label="Systems architecture diagram"><!-- injected SVG --></div>
+              <div class="card-foot">
+                <div class="tiny-muted">Senior principle: the diagram must match reality. If it doesn’t, we fix reality or fix the diagram.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="systems-right">
+            <div class="sticky">
+              <div class="card">
+                <div class="card-head">
+                  <div class="card-title">Focus panel</div>
+                  <div class="tiny-muted">Click a node to see details</div>
+                </div>
+                <div class="focus" id="systemsFocus">
+                  <div class="focus-empty">Select a node from the diagram.</div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-head">
+                  <div class="card-title">Controls</div>
+                </div>
+
+                <div class="controls">
+                  <button class="btn" id="resetDiagram" type="button">Reset</button>
+                  <button class="btn ghost" id="toggleEdges" type="button">Toggle edges</button>
+                  <button class="btn ghost" id="toggleZones" type="button">Toggle zones</button>
+                  <button class="btn ghost" id="exportDiagram" type="button">Export SVG</button>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="tiny-muted">
+                  Want this for your org? I can translate your stack into a living map with policies, owners, and runbooks.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section alt" id="impact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Impact</h2>
+          <p>I measure what matters: time saved, risk reduced, and clarity created. Here’s a sample.</p>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title">Operational outcomes</div>
+              <div class="tiny-muted">Modeled estimates · Replace with your real numbers</div>
+            </div>
+            <div class="chart" id="impactChart"></div>
+            <div class="card-foot tiny-muted">These metrics are generated on-page. Swap in real values in <code>data.js</code>.</div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title">Incident readiness</div>
+              <div class="tiny-muted">Policies · runbooks · escalations</div>
+            </div>
+
+            <div class="timeline" id="incidentTimeline"><!-- injected --></div>
+
+            <div class="card-foot tiny-muted">Built for auditability: timelines, artifacts, and next actions.</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="grid three" id="principlesGrid"><!-- injected --></div>
+      </div>
+    </section>
+
+    <section class="section" id="writing">
+      <div class="container">
+        <div class="section-head">
+          <h2>Writing & docs</h2>
+          <p>Clear communication is part of the system. I write to reduce ambiguity, unblock teams, and make security practical.</p>
+        </div>
+
+        <div class="grid three" id="writingGrid"><!-- injected --></div>
+
+        <div class="note">Want a sample “incident escalation” email template or a vendor comparison rubric? It’s in the command palette.</div>
+      </div>
+    </section>
+
+    <section class="section alt" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>If you need a calm operator who can lead identity, security, and automation — and ship — let’s talk.</p>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title">Send a note</div>
+              <div class="tiny-muted">This form uses <code>mailto:</code> so it works on GitHub Pages.</div>
+            </div>
+
+            <form id="contactForm">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn primary" type="submit">Open email</button>
+                <button class="btn ghost" type="reset">Reset</button>
+              </div>
+
+              <div class="tiny-muted">Pro tip: edit <code>CONFIG.contact.email</code> in <code>config.js</code>.</div>
+            </form>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title">Links</div>
+            </div>
+
+            <div class="links" id="linksPanel"><!-- injected --></div>
+
+            <div class="divider"></div>
+
+            <div class="tiny-muted">
+              Accessibility: fully keyboard-navigable. Motion respects <code>prefers-reduced-motion</code>.
+              Theme respects <code>prefers-color-scheme</code>.
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="tiny-muted">Built as a static site: no build step. Just push to GitHub and enable Pages.</div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div class="footer-left">
+            <div class="footer-title">Tyler Seder</div>
+            <div class="footer-sub">Technology Experience Architect</div>
+          </div>
+
+          <div class="footer-right">
+            <a class="btn tiny ghost" href="#top">Back to top</a>
+            <button class="btn tiny ghost" id="copyLink" type="button">Copy share link</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Command Palette -->
+  <div class="modal" id="commandPalette" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-panel" role="document">
+      <div class="cmdk">
+        <div class="cmdk-head">
+          <div class="cmdk-title">Command</div>
+          <div class="cmdk-hint"><span class="kbd">Esc</span> to close</div>
+        </div>
+        <div class="cmdk-input">
+          <label class="sr-only" for="cmdkSearch">Search commands</label>
+          <input id="cmdkSearch" type="text" placeholder="Type to search… (projects, case studies, docs, actions)" autocomplete="off" />
+        </div>
+        <div class="cmdk-list" id="cmdkList" role="listbox" aria-label="Commands"><!-- injected --></div>
+        <div class="cmdk-foot">
+          <div class="tiny-muted">Navigate: <span class="kbd">↑</span><span class="kbd">↓</span> · Open: <span class="kbd">Enter</span></div>
+          <div class="tiny-muted">Quick: “case”, “incident”, “vendor”, “zero trust”, “dns”, “entra”</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
