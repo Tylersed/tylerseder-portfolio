@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en" data-theme="nova" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f0f8">
+  <meta name="description" content="Tyler Seder is a Technology Experience Architect, cybersecurity graduate, internal IT and security lead, and Hack The Box CTF competitor based in Georgia.">
+  <meta property="og:title" content="Tyler Seder — Cybersecurity, Systems & Digital Experience">
+  <meta property="og:description" content="Secure systems, clear experiences, and practical technology leadership.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tylerseder.com/">
+  <meta property="og:image" content="https://tylerseder.com/assets/tyler-hero-poster.png">
+  <link rel="canonical" href="https://tylerseder.com/">
+  <title>Tyler Seder — Cybersecurity, Systems & Digital Experience</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="intro-loader" data-loader aria-hidden="true">
+    <div class="loader-card">
+      <div class="loader-logo">TS</div>
+      <div class="loader-copy"><span>TYLER SEDER</span><small>SECURITY · SYSTEMS · EXPERIENCE</small></div>
+      <div class="loader-track"><i data-loader-track></i></div>
+      <div class="loader-status"><span>Portfolio system</span><b data-loader-label>Loading</b></div>
+    </div>
+  </div>
+
+  <div class="page-progress" aria-hidden="true"><i data-progress></i></div>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#overview" aria-label="Tyler Seder home">
+      <span class="brand-mark">TS</span>
+      <span class="brand-copy"><strong>Tyler Seder</strong><small>Cybersecurity × Systems</small></span>
+    </a>
+
+    <nav class="header-nav" aria-label="Primary navigation">
+      <a href="#experience" data-nav="experience">Experience</a>
+      <a href="#projects" data-nav="projects">Projects</a>
+      <a href="#ctf" data-nav="ctf">CTF</a>
+      <a href="#education" data-nav="education">Education</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="utility-button" type="button" data-command-open aria-label="Open command palette"><span>⌘</span>K</button>
+      <button class="mode-switch" type="button" data-mode-toggle aria-pressed="false"><span class="mode-dot"></span><b data-mode-label>Explore</b></button>
+      <button class="theme-button" type="button" data-theme-open aria-label="Choose color theme"><i></i><i></i><i></i></button>
+      <button class="menu-button" type="button" data-menu aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <aside class="section-index" aria-label="Page sections">
+    <p>INDEX</p>
+    <a href="#overview" data-index="overview"><span>01</span><b>Overview</b></a>
+    <a href="#experience" data-index="experience"><span>02</span><b>Experience</b></a>
+    <a href="#projects" data-index="projects"><span>03</span><b>Projects</b></a>
+    <a href="#systems" data-index="systems"><span>04</span><b>Systems</b></a>
+    <a href="#ctf" data-index="ctf"><span>05</span><b>CTF</b></a>
+    <a href="#education" data-index="education"><span>06</span><b>Education</b></a>
+    <a href="#contact" data-index="contact"><span>07</span><b>Contact</b></a>
+    <div class="index-track"><i data-index-progress></i></div>
+  </aside>
+
+  <div class="theme-popover" data-theme-panel aria-hidden="true">
+    <div class="popover-head"><span>Choose a visual theme</span><button type="button" data-theme-close>Close</button></div>
+    <button class="theme-option" type="button" data-theme-choice="nova"><span class="swatch nova"></span><span><b>Nova</b><small>Soft neutral, rich violet, coral</small></span><i>01</i></button>
+    <button class="theme-option" type="button" data-theme-choice="orchid"><span class="swatch orchid"></span><span><b>Orchid</b><small>Deep plum, magenta, soft rose</small></span><i>02</i></button>
+    <button class="theme-option" type="button" data-theme-choice="ember"><span class="swatch ember"></span><span><b>Ember</b><small>Smoky charcoal, coral, crimson</small></span><i>03</i></button>
+  </div>
+
+  <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <div class="mobile-menu-head"><span>Navigate</span><button type="button" data-menu-close>Close</button></div>
+    <nav>
+      <a href="#overview"><span>01</span>Overview</a>
+      <a href="#experience"><span>02</span>Experience</a>
+      <a href="#projects"><span>03</span>Projects</a>
+      <a href="#systems"><span>04</span>Systems</a>
+      <a href="#ctf"><span>05</span>CTF competition</a>
+      <a href="#education"><span>06</span>Education</a>
+      <a href="#contact"><span>07</span>Contact</a>
+      <a href="resume.html"><span>08</span>Résumé</a>
+    </nav>
+  </div>
+
+  <div class="command-overlay" data-command aria-hidden="true">
+    <div class="command-palette" role="dialog" aria-modal="true" aria-labelledby="command-title">
+      <div class="command-search">
+        <span>⌕</span>
+        <input data-command-input id="command-title" type="search" autocomplete="off" placeholder="Search projects, sections, or type a command…">
+        <kbd>ESC</kbd>
+      </div>
+      <div class="command-list" data-command-list>
+        <button type="button" data-command-target="#projects" data-command-keywords="work projects case studies portal infrastructure microsoft"><span>Go to</span><b>Selected projects</b><kbd>P</kbd></button>
+        <button type="button" data-command-target="#ctf" data-command-keywords="ctf hack the box cyber apocalypse salt crown ty6"><span>Go to</span><b>CTF competition</b><kbd>C</kbd></button>
+        <button type="button" data-command-target="#experience" data-command-keywords="job work peachtree role architect"><span>Go to</span><b>Professional experience</b><kbd>E</kbd></button>
+        <button type="button" data-command-target="#education" data-command-keywords="school degree gpa graduation lanier"><span>Go to</span><b>Education and credentials</b><kbd>G</kbd></button>
+        <button type="button" data-command-href="resume.html" data-command-keywords="resume cv download"><span>Open</span><b>Digital résumé</b><kbd>R</kbd></button>
+        <button type="button" data-command-href="https://github.com/tylersed" data-command-external="true" data-command-keywords="github repositories code"><span>Open</span><b>GitHub profile</b><kbd>↗</kbd></button>
+        <button type="button" data-command-href="https://www.linkedin.com/in/tyler-seder-99096a292" data-command-external="true" data-command-keywords="linkedin professional network"><span>Open</span><b>LinkedIn profile</b><kbd>↗</kbd></button>
+        <button type="button" data-command-action="copy-email" data-command-keywords="email contact copy"><span>Action</span><b>Copy email address</b><kbd>⌘C</kbd></button>
+        <button type="button" data-command-action="theme" data-command-keywords="theme color palette appearance"><span>Action</span><b>Change visual theme</b><kbd>T</kbd></button>
+        <button type="button" data-command-action="mode" data-command-keywords="focus mode compact explore overview"><span>Action</span><b>Toggle focus mode</b><kbd>M</kbd></button>
+      </div>
+      <div class="command-footer"><span><kbd>↑</kbd><kbd>↓</kbd> Navigate</span><span><kbd>Enter</kbd> Select</span><span>Try: <code>whoami</code></span></div>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="hero page-section" id="overview" data-section="overview">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow hero-reveal"><i></i><span>Technology Experience Architect · Georgia</span></div>
+          <h1 data-split>Security-minded technology, designed around people.</h1>
+          <p class="hero-lead hero-reveal">I’m Tyler Seder—a cybersecurity graduate and hands-on IT leader who secures identities, operates business-critical systems, builds internal products, and turns complex technology into clear experiences.</p>
+          <div class="hero-actions hero-reveal">
+            <a class="action-button primary magnetic" href="#projects"><span>View my work</span><i>↘</i></a>
+            <a class="action-button secondary magnetic" href="#ctf"><span>Explore my CTF result</span><i>→</i></a>
+            <a class="text-button" href="resume.html">Open résumé <span>↗</span></a>
+          </div>
+          <div class="hero-proof hero-reveal">
+            <div><strong>3.71</strong><span>Final GPA</span></div>
+            <div><strong>192</strong><span>Global CTF rank</span></div>
+            <div><strong>123</strong><span>Team flags</span></div>
+            <div><strong>2026</strong><span>Cybersecurity graduate</span></div>
+          </div>
+        </div>
+
+        <div class="hero-portrait hero-reveal">
+          <div class="portrait-card">
+            <picture>
+              <source srcset="assets/tyler-hero-poster.webp" type="image/webp">
+              <img src="assets/tyler-hero-poster.png" alt="Tyler Seder" width="1672" height="941">
+            </picture>
+            <div class="portrait-overlay"></div>
+            <div class="portrait-caption"><span>PROFILE / 001</span><b>TYLER SEDER</b><small>Cybersecurity · Systems · Experience</small></div>
+          </div>
+          <div class="portrait-chip chip-role"><small>CURRENT ROLE</small><b>Technology Experience Architect</b></div>
+          <div class="portrait-chip chip-status"><i></i><span>Building secure, useful technology</span></div>
+          <svg class="portrait-orbit" viewBox="0 0 520 540" aria-hidden="true"><path d="M69 270c0-118 90-214 201-214s201 96 201 214-90 214-201 214S69 388 69 270Z"/><path d="M107 270c0-96 73-174 163-174s163 78 163 174-73 174-163 174-163-78-163-174Z"/></svg>
+        </div>
+      </div>
+
+      <div class="shell identity-strip hero-reveal">
+        <div><span>FOCUS</span><b>Security, identity, infrastructure, internal products</b></div>
+        <div><span>EDUCATION</span><b>AAS Cybersecurity · Lanier Technical College</b></div>
+        <div><span>CONTACT</span><a href="mailto:tylerseder12@gmail.com">tylerseder12@gmail.com ↗</a></div>
+      </div>
+    </section>
+
+    <section class="snapshot professional-summary page-section" id="snapshot" data-section="snapshot">
+      <div class="shell professional-grid">
+        <div>
+          <p class="section-kicker">PROFESSIONAL OVERVIEW</p>
+          <h2>Cybersecurity training with real ownership of business technology.</h2>
+        </div>
+        <div class="professional-facts">
+          <article><span>Current title</span><b>Technology Experience Architect</b></article>
+          <article><span>Core scope</span><b>Security, Microsoft 365, infrastructure, automation</b></article>
+          <article><span>Education</span><b>AAS Cybersecurity · 3.71 GPA</b></article>
+          <article><span>Competition</span><b>Top 3% · Cyber Apocalypse CTF 2026</b></article>
+        </div>
+        <div class="professional-actions"><a href="resume.html">Open résumé</a><a href="mailto:tylerseder12@gmail.com">Email Tyler</a></div>
+      </div>
+    </section>
+
+    <section class="capabilities page-section" id="capabilities" data-section="capabilities" data-explore-only>
+      <div class="shell section-heading reveal-group">
+        <div class="section-label"><span>01</span><b>WHAT I ACTUALLY DO</b></div>
+        <h2>Technical depth is useful only when it improves how people work.</h2>
+        <p>I work across security, systems, infrastructure, product design, and support—owning the connections between them rather than treating each as a separate problem.</p>
+      </div>
+      <div class="shell capability-grid">
+        <article class="uiverse-card reveal-card" data-tilt>
+          <span class="card-index">01</span><div class="card-icon">ID</div><h3>Protect identity</h3><p>Manage Microsoft 365, Entra ID, MFA, Conditional Access, permissions, and account security.</p><div class="card-foot"><span>Identity</span><span>Access</span><span>Policy</span></div>
+        </article>
+        <article class="uiverse-card reveal-card" data-tilt>
+          <span class="card-index">02</span><div class="card-icon">OP</div><h3>Operate systems</h3><p>Keep networks, endpoints, cloud services, printers, collaboration tools, and business platforms dependable.</p><div class="card-foot"><span>Infrastructure</span><span>Cloud</span><span>Support</span></div>
+        </article>
+        <article class="uiverse-card reveal-card" data-tilt>
+          <span class="card-index">03</span><div class="card-icon">UX</div><h3>Build internal products</h3><p>Design portals, support tools, onboarding experiences, and interfaces that non-technical users can navigate confidently.</p><div class="card-foot"><span>Web</span><span>UX</span><span>Automation</span></div>
+        </article>
+        <article class="uiverse-card reveal-card" data-tilt>
+          <span class="card-index">04</span><div class="card-icon">SE</div><h3>Improve security</h3><p>Evaluate risk, coordinate vendors, develop security guidance, investigate problems, and test within authorized environments.</p><div class="card-foot"><span>Defense</span><span>Testing</span><span>Response</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="experience page-section" id="experience" data-section="experience">
+      <div class="shell section-heading reveal-group">
+        <div class="section-label"><span>02</span><b>EXPERIENCE</b></div>
+        <h2>Rapid growth from technology support into security and systems ownership.</h2>
+        <p>My role expanded because the work required someone who could connect technical operations, security, user experience, and business priorities.</p>
+      </div>
+
+      <div class="shell career-layout">
+        <div class="career-line" aria-hidden="true"><i data-career-line></i></div>
+        <article class="career-entry reveal-card">
+          <div class="career-date"><span>JAN 2026 — PRESENT</span><i></i></div>
+          <div class="career-title"><p>Peachtree Town & Country</p><h3>Technology Experience Architect</h3></div>
+          <div class="career-copy"><p>Lead internal technology and security operations across identity, devices, networks, cloud services, business platforms, internal tools, automation, vendor coordination, and user support.</p><ul><li>Internal Microsoft 365 and security administration</li><li>Infrastructure and network project ownership</li><li>Internal portal and digital experience development</li><li>Security policy, device, identity, and vendor coordination</li></ul></div>
+        </article>
+        <article class="career-entry reveal-card">
+          <div class="career-date"><span>SEP 2025 — JAN 2026</span><i></i></div>
+          <div class="career-title"><p>Peachtree Town & Country</p><h3>Technology Experience Specialist</h3></div>
+          <div class="career-copy"><p>Supported advisors and staff, improved onboarding, documented technical processes, managed account and platform access, and began building internal tools that reduced friction.</p><ul><li>User support and onboarding</li><li>Microsoft 365 administration</li><li>Business application coordination</li><li>Workflow and documentation improvements</li></ul></div>
+        </article>
+        <div class="career-promotion reveal-card" data-explore-only><span>Promotion signal</span><b>Expanded responsibility across security, infrastructure, development, and operational leadership.</b><i>↑</i></div>
+      </div>
+    </section>
+
+    <section class="projects page-section" id="projects" data-section="projects">
+      <div class="shell section-heading reveal-group">
+        <div class="section-label"><span>03</span><b>SELECTED PROJECTS</b></div>
+        <h2>Case studies that show the system, the constraints, and the outcome.</h2>
+        <p>Every project below is clearly clickable and opens a deeper view of the problem, my role, the technical choices, and the result.</p>
+      </div>
+
+      <div class="shell project-list">
+        <a class="project-panel feature reveal-card" href="projects/peachtree-portal.html" data-tilt>
+          <div class="project-number">01</div>
+          <div class="project-content"><p>INTERNAL PLATFORM · AZURE · PRODUCT DESIGN</p><h3>My Peachtree Portal</h3><span>A centralized digital workplace that brings support, tools, resources, communications, directories, and staff workflows into one clear experience.</span><div class="impact-list"><b>Impact</b><span>Centralized essential systems</span><span>Reduced navigation friction</span><span>Designed for non-technical users</span></div><div class="tag-row"><i>Azure</i><i>GitHub</i><i>Entra ID</i><i>JavaScript</i></div></div>
+          <div class="project-visual portal-ui" aria-hidden="true"><div class="mini-window"><div class="mini-top"><i></i><i></i><i></i><span>mypeachtreeportal.com</span></div><div class="mini-body"><aside><b>PTC</b><span></span><span></span><span></span></aside><section class="mini-main"><h4>Good morning</h4><div><i></i><i></i><i></i><i></i><i></i><i></i></div></section></div></div></div>
+          <div class="project-action"><span>View case study</span><i>↗</i></div>
+        </a>
+
+        <div class="project-two-col">
+          <a class="project-panel reveal-card" href="projects/microsoft-365.html" data-tilt>
+            <div class="project-number">02</div><div class="project-content"><p>IDENTITY · SECURITY · OPERATIONS</p><h3>Microsoft 365 Operations</h3><span>Identity access, MFA, Conditional Access, account security, collaboration, lifecycle management, and daily administration.</span><div class="tag-row"><i>Entra ID</i><i>M365</i><i>PowerShell</i></div></div><div class="project-visual identity-ui" aria-hidden="true"><div class="identity-core">ID</div><span class="node n1">MFA</span><span class="node n2">CA</span><span class="node n3">DEV</span><span class="node n4">LOG</span></div><div class="project-action"><span>View case study</span><i>↗</i></div>
+          </a>
+          <a class="project-panel reveal-card" href="projects/infrastructure.html" data-tilt>
+            <div class="project-number">03</div><div class="project-content"><p>NETWORK · ENDPOINTS · RESILIENCE</p><h3>Office Infrastructure</h3><span>Business connectivity, failover, firewalling, Wi-Fi, printers, endpoints, monitoring, and vendor coordination.</span><div class="tag-row"><i>FortiGate</i><i>Ubiquiti</i><i>SentinelOne</i></div></div><div class="project-visual network-ui" aria-hidden="true"><span class="hub">HQ</span><i class="line l1"></i><i class="line l2"></i><i class="line l3"></i><b class="device d1">WAN</b><b class="device d2">AP</b><b class="device d3">EDR</b></div><div class="project-action"><span>View case study</span><i>↗</i></div>
+          </a>
+        </div>
+
+        <a class="project-panel wide reveal-card" href="projects/security-lab.html" data-tilt>
+          <div class="project-number">04</div>
+          <div class="project-content"><p>CYBERSECURITY · AUTOMATION · LABS</p><h3>Security & Automation Lab</h3><span>Hands-on authorized testing, SOC workflow simulation, Python automation, Linux environments, incident thinking, and security education.</span><div class="impact-list"><b>What it demonstrates</b><span>Technical curiosity</span><span>Repeatable testing</span><span>Evidence-based problem solving</span></div><div class="tag-row"><i>Python</i><i>Linux</i><i>Burp Suite</i><i>Wireshark</i></div></div>
+          <div class="project-visual terminal-ui" aria-hidden="true"><div class="terminal-head"><span>lab://ty6</span><i>●</i></div><div class="terminal-lines"><p><b>$</b> inspect --system target</p><p><span>[+]</span> evidence collected</p><p><span>[+]</span> hypothesis validated</p><p><span>[✓]</span> remediation documented</p></div></div>
+          <div class="project-action"><span>View case study</span><i>↗</i></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="systems page-section" id="systems" data-section="systems" data-explore-only>
+      <div class="shell section-heading reveal-group">
+        <div class="section-label"><span>04</span><b>SYSTEMS MAP</b></div>
+        <h2>One view of the connected environment I help operate.</h2>
+        <p>Hover or focus each node to see why it matters. This is how identity, security, infrastructure, users, and internal tools connect.</p>
+      </div>
+      <div class="shell system-map reveal-card" data-system-map>
+        <svg class="map-lines" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+          <path data-path d="M500 280 C390 210 300 150 180 110"/><path data-path d="M500 280 C610 210 700 150 820 110"/><path data-path d="M500 280 C360 300 270 340 150 430"/><path data-path d="M500 280 C640 300 730 340 850 430"/><path data-path d="M500 280 C500 380 500 430 500 500"/>
+        </svg>
+        <button class="system-node center" type="button" data-system="Core operations"><span>CORE</span><b>Technology Operations</b><small>Security + systems + experience</small></button>
+        <button class="system-node node-identity" type="button" data-system="Microsoft 365 and Entra ID"><span>01</span><b>Identity</b><small>MFA, access, accounts</small></button>
+        <button class="system-node node-security" type="button" data-system="Security controls and monitoring"><span>02</span><b>Security</b><small>Policy, EDR, response</small></button>
+        <button class="system-node node-network" type="button" data-system="Networks and infrastructure"><span>03</span><b>Infrastructure</b><small>WAN, firewall, Wi-Fi</small></button>
+        <button class="system-node node-products" type="button" data-system="Internal products and automation"><span>04</span><b>Digital products</b><small>Portal, workflows, tools</small></button>
+        <button class="system-node node-users" type="button" data-system="Staff and advisor experience"><span>05</span><b>People</b><small>Support, onboarding, clarity</small></button>
+        <div class="system-tooltip" data-system-tooltip><span>SELECT A NODE</span><b>The environment works as one system.</b></div>
+      </div>
+    </section>
+
+    <section class="ctf page-section" id="ctf" data-section="ctf">
+      <div class="ctf-grid-bg" aria-hidden="true"></div>
+      <div class="shell ctf-head reveal-group">
+        <div class="section-label inverse"><span>05</span><b>COMPETITIVE CYBERSECURITY</b></div>
+        <div><p>HACK THE BOX · CYBER APOCALYPSE CTF 2026</p><h2>The Salt Crown</h2></div>
+        <a class="event-button magnetic" href="https://ctf.hackthebox.com/event/details/cyber-apocalypse-ctf-2026-the-salt-crown-3432" target="_blank" rel="noopener"><span>Official event page</span><i>↗</i></a>
+      </div>
+
+      <div class="shell ctf-layout">
+        <div class="ctf-story reveal-card">
+          <div class="ctf-player"><span>COMPETITOR</span><h3>Tyler Seder <small>/ Ty6</small></h3><p>Captain of Obsidian Sentinel, a two-person team competing across a global field in my first hackathon and CTF competition.</p></div>
+          <div class="ctf-scoreboard">
+            <article><span>GLOBAL RANK</span><strong data-count="192">0</strong><small>of 6,743 teams</small></article>
+            <article><span>TEAM FLAGS</span><strong data-count="123">0</strong><small>captured</small></article>
+            <article><span>TEAM POINTS</span><strong data-count="56775" data-format="comma">0</strong><small>total</small></article>
+            <article><span>INDIVIDUAL FLAGS</span><strong data-count="115">0</strong><small>Ty6</small></article>
+            <article><span>INDIVIDUAL POINTS</span><strong data-count="49675" data-format="comma">0</strong><small>Ty6</small></article>
+            <article><span>WORLDWIDE</span><strong>TOP 3%</strong><small>final result</small></article>
+          </div>
+          <a class="ctf-case-link" href="projects/cyber-apocalypse-2026.html"><span>Read the full competition profile</span><i>→</i></a>
+        </div>
+
+        <div class="challenge-map reveal-card" data-explore-only>
+          <div class="challenge-center"><span>CTF</span><b>Ty6</b></div>
+          <button style="--x:12%;--y:16%" data-challenge="Web exploitation and application logic">Web</button>
+          <button style="--x:47%;--y:5%" data-challenge="Digital evidence, logs, memory, and files">Forensics</button>
+          <button style="--x:79%;--y:18%" data-challenge="Binary exploitation and low-level behavior">Pwn</button>
+          <button style="--x:89%;--y:50%" data-challenge="Secure code review and vulnerability analysis">Secure Coding</button>
+          <button style="--x:72%;--y:78%" data-challenge="Cryptography and protocol reasoning">Crypto</button>
+          <button style="--x:42%;--y:88%" data-challenge="Cloud platforms and configuration analysis">Cloud</button>
+          <button style="--x:10%;--y:73%" data-challenge="Mobile application analysis">Mobile</button>
+          <button style="--x:1%;--y:44%" data-challenge="AI and machine-learning challenge analysis">AI / ML</button>
+          <div class="challenge-caption" data-challenge-caption><span>CHALLENGE MAP</span><b>Hover a category to explore the range.</b></div>
+          <svg viewBox="0 0 620 620" aria-hidden="true"><circle cx="310" cy="310" r="185"/><circle cx="310" cy="310" r="250"/><path d="M310 310L92 100M310 310L310 55M310 310L525 110M310 310L570 310M310 310L500 510M310 310L310 565M310 310L95 505M310 310L50 310"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills page-section" id="skills" data-section="skills" data-explore-only>
+      <div class="shell section-heading reveal-group">
+        <div class="section-label"><span>06</span><b>TECHNICAL RANGE</b></div>
+        <h2>Organized by how the technology is used—not by keyword volume.</h2>
+        <p>Hover or focus a skill to see the context behind it.</p>
+      </div>
+      <div class="shell skill-groups">
+        <article class="skill-group reveal-card"><span>01</span><h3>Cybersecurity</h3><div><button data-tip="Authorized labs, CTFs, testing workflow, and methodology">Penetration testing</button><button data-tip="Traffic inspection, protocol reasoning, and evidence analysis">Wireshark</button><button data-tip="Web application testing inside authorized environments">Burp Suite</button><button data-tip="Linux-based labs, tooling, scripting, and troubleshooting">Linux</button><button data-tip="Endpoint security operations and incident context">SentinelOne</button><button data-tip="Security monitoring and managed detection coordination">Huntress</button></div></article>
+        <article class="skill-group reveal-card"><span>02</span><h3>Microsoft & identity</h3><div><button data-tip="Tenant administration, collaboration, accounts, and policy">Microsoft 365</button><button data-tip="Identity, MFA, access, and Conditional Access">Entra ID</button><button data-tip="Administrative automation and repeatable operations">PowerShell</button><button data-tip="Email security, authentication, and delivery troubleshooting">Exchange Online</button><button data-tip="Device and access control planning">Conditional Access</button></div></article>
+        <article class="skill-group reveal-card"><span>03</span><h3>Infrastructure</h3><div><button data-tip="Firewalling, connectivity, routing, and failover operations">FortiGate</button><button data-tip="Wireless and network experience design">Ubiquiti</button><button data-tip="Business connectivity and resilient internet design">WAN / failover</button><button data-tip="Endpoint setup, support, lifecycle, and security">Endpoint operations</button><button data-tip="Cloud-hosted internal products and services">Azure</button></div></article>
+        <article class="skill-group reveal-card"><span>04</span><h3>Development & automation</h3><div><button data-tip="Front-end interfaces, portals, and user experiences">HTML / CSS / JavaScript</button><button data-tip="Automation, security tooling, and workflow scripting">Python</button><button data-tip="Source control and deployment workflows">GitHub</button><button data-tip="Static hosting, identity integration, and delivery">Azure Static Web Apps</button><button data-tip="Workflow improvement and operational automation">Process automation</button></div></article>
+      </div>
+      <div class="global-tooltip" data-global-tooltip role="tooltip"></div>
+    </section>
+
+    <section class="education page-section" id="education" data-section="education">
+      <div class="shell education-layout">
+        <div class="degree-card reveal-card">
+          <div class="degree-top"><span>06 / EDUCATION</span><b>GRADUATED</b></div>
+          <div class="degree-copy"><p>Lanier Technical College</p><h2>Associate of Applied Science in Cybersecurity</h2><div class="degree-meta"><span>Summer 2026</span><span>Final GPA</span><strong>3.71</strong></div></div>
+          <div class="degree-seal" aria-hidden="true"><span>AAS</span><b>CYBERSECURITY</b><i>2026</i></div>
+        </div>
+        <div class="credential-list">
+          <article class="credential-card reveal-card"><span>01</span><div><small>CERTIFICATION</small><h3>TestOut Ethical Hacker Pro</h3><p>Hands-on ethical hacking and security testing credential.</p></div><b>ACHIEVED</b></article>
+          <article class="credential-card reveal-card"><span>02</span><div><small>COMPETITIVE EXPERIENCE</small><h3>Hack The Box Cyber Apocalypse 2026</h3><p>Top 3% worldwide with Obsidian Sentinel.</p></div><a href="projects/cyber-apocalypse-2026.html">VIEW ↗</a></article>
+          <article class="credential-card reveal-card"><span>03</span><div><small>CONTINUING FOCUS</small><h3>Advanced security labs and automation</h3><p>Penetration testing, cloud security, identity protection, and practical defense.</p></div><b>ACTIVE</b></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="principles page-section" id="principles" data-section="principles" data-explore-only>
+      <div class="shell principles-layout">
+        <div class="section-label"><span>07</span><b>OPERATING PRINCIPLES</b></div>
+        <blockquote class="reveal-card">“Security should protect people without making their work harder.”</blockquote>
+        <div class="principle-list">
+          <article class="reveal-card"><span>01</span><h3>Make complexity feel simple.</h3><p>The system behind the interface can be sophisticated. The experience should still feel obvious.</p></article>
+          <article class="reveal-card"><span>02</span><h3>Work from evidence.</h3><p>Logs, behavior, user context, and technical facts should guide decisions—not assumptions.</p></article>
+          <article class="reveal-card"><span>03</span><h3>Build for the real user.</h3><p>Internal tools deserve the same care, clarity, and polish as customer-facing products.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact page-section" id="contact" data-section="contact">
+      <div class="shell contact-layout">
+        <div class="contact-copy reveal-group">
+          <div class="section-label inverse"><span>08</span><b>CONTACT</b></div>
+          <p>SECURITY, SYSTEMS, AND TECHNOLOGY—BUILT WITH PURPOSE.</p>
+          <h2>A portfolio of projects, technical growth, and practical cybersecurity experience.</h2>
+        </div>
+        <div class="contact-panel reveal-card">
+          <span>PRIMARY EMAIL</span>
+          <a class="contact-email" href="mailto:tylerseder12@gmail.com">tylerseder12@gmail.com</a>
+          <button class="copy-button" type="button" data-copy-email><span data-copy-label>Copy email</span><i>⧉</i></button>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/tyler-seder-99096a292" target="_blank" rel="noopener"><span>LinkedIn</span><i>↗</i></a>
+            <a href="https://github.com/tylersed" target="_blank" rel="noopener"><span>GitHub</span><i>↗</i></a>
+            <a href="resume.html"><span>Digital résumé</span><i>↗</i></a>
+          </div>
+          <p class="contact-note">Please do not send passwords, access codes, or other sensitive information by email.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell"><div><b>TS</b><span>Tyler Seder</span></div><p>Security-minded technology, designed around people.</p><span>© <i data-year></i> Tyler Seder</span></div>
+  </footer>
+
+  <div class="mode-toast" data-toast aria-live="polite"></div>
+</body>
+</html>

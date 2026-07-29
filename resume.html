@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" data-theme="nova">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f0f8">
+  <meta name="description" content="Résumé for Tyler Seder, Technology Experience Architect.">
+  <title>Tyler Seder — Résumé</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="resume.css">
+</head>
+<body>
+  <header class="resume-toolbar">
+    <a href="index.html">← Back to portfolio</a>
+    <div class="toolbar-actions"><button type="button" data-resume-theme>Theme: Nova</button><button type="button" onclick="window.print()">Print / Save PDF</button></div>
+  </header>
+
+  <main class="resume-page">
+    <section class="resume-heading">
+      <div>
+        <p class="eyebrow">Technology Experience Architect</p>
+        <h1>Tyler Seder</h1>
+        <p class="summary">Technology Experience Architect and cybersecurity graduate focused on secure IT operations, Microsoft 365 administration, identity, internal platforms, automation, infrastructure, and user-centered technology experiences.</p>
+      </div>
+      <address>
+        <span>Alpharetta, Georgia</span>
+        <a href="mailto:tylerseder12@gmail.com">tylerseder12@gmail.com</a>
+        <a href="https://tylerseder.com">tylerseder.com</a>
+        <a href="https://www.linkedin.com/in/tyler-seder-99096a292">LinkedIn</a>
+        <a href="https://github.com/tylersed">GitHub</a>
+      </address>
+    </section>
+
+    <div class="resume-grid">
+      <div class="resume-main">
+        <section>
+          <h2>Experience</h2>
+          <article>
+            <div class="role-head"><div><h3>Peachtree Town &amp; Country</h3><p>Technology Experience Architect</p></div><span>Jan 2026 — Present</span></div>
+            <ul>
+              <li>Lead day-to-day internal technology and security operations across Microsoft 365, identity, employee onboarding, business platforms, devices, networks, and user support.</li>
+              <li>Build and maintain internal web tools, documented workflows, and practical automation that reduce friction for staff and advisors.</li>
+              <li>Coordinate network, internet, camera, printing, communications, and technology vendors while maintaining clear operational ownership.</li>
+              <li>Support email security, identity controls, phishing response, authentication, DNS, and security awareness processes.</li>
+            </ul>
+            <p class="subrole"><strong>Technology Experience Specialist</strong> · Sep 2025 — Jan 2026</p>
+          </article>
+
+          <article>
+            <div class="role-head"><div><h3>Marlow's Tavern</h3><p>Food Server</p></div><span>Dec 2024 — Nov 2025</span></div>
+            <ul><li>Delivered accurate, high-volume customer service while managing orders, payments, communication, and rapidly changing priorities.</li></ul>
+          </article>
+
+          <article>
+            <div class="role-head"><div><h3>Classic Subaru of Atlanta</h3><p>Automotive Technician</p></div><span>Dec 2023 — Nov 2024</span></div>
+            <ul><li>Advanced from routine maintenance into inspections, component replacement, and basic diagnostics while maintaining consistent service quality.</li></ul>
+          </article>
+        </section>
+
+        <section>
+          <h2>Selected Projects</h2>
+          <article><h3>My Peachtree Portal</h3><p>Designed and deployed a centralized advisor resource portal with internal links, notices, directories, support tools, resource content, responsive layouts, and administrative controls.</p></article>
+          <article><h3>Microsoft 365 Operations</h3><p>Administered Exchange Online, shared mailboxes, calendars, distribution groups, contacts, authentication, email security, DNS records, and staff workflows.</p></article>
+          <article><h3>Security + Infrastructure Labs</h3><p>Hands-on work with pfSense, Snort, OpenVAS, Nmap, VPNs, Active Directory, firewall policy, network defense, logging, and incident response concepts.</p></article>
+        </section>
+      </div>
+
+      <aside class="resume-side">
+        <section>
+          <h2>Capabilities</h2>
+          <ul class="compact">
+            <li>Microsoft 365 / Exchange Online</li>
+            <li>Entra ID and identity controls</li>
+            <li>Google Workspace administration</li>
+            <li>PowerShell and workflow automation</li>
+            <li>GitHub Pages and internal web tools</li>
+            <li>DNS, SPF, DKIM, and DMARC</li>
+            <li>Network and vendor coordination</li>
+            <li>Device deployment and onboarding</li>
+            <li>Phishing response and security awareness</li>
+            <li>Documentation and technical training</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Education</h2>
+          <article><h3>Lanier Technical College</h3><p>Associate of Applied Science in Cybersecurity</p><span>Graduated Summer 2026 · 3.71 GPA</span></article>
+          <article><h3>Kennesaw State University</h3><p>Prior university coursework</p></article>
+        </section>
+
+        <section>
+          <h2>Certification</h2>
+          <article><h3>TestOut Ethical Hacker Pro</h3><p>Earned 2026</p></article>
+        </section>
+
+        <section>
+          <h2>Security Practice</h2>
+          <ul class="compact"><li>Cyber Apocalypse CTF 2026: The Salt Crown — Captain of Obsidian Sentinel as Ty6; global team rank 192, 123 team flags, and 56,775 team points</li><li>Hack The Box competitive CTF practice</li><li>TryHackMe Pre-Security completed</li><li>Forensics, web, pwn, reversing, crypto, cloud, and Linux</li></ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+<script>
+(()=>{const themes=['nova','orchid','ember'];const root=document.documentElement;let theme='nova';try{theme=localStorage.getItem('tyler-theme')||theme}catch{}if(!themes.includes(theme))theme='nova';const button=document.querySelector('[data-resume-theme]');const apply=()=>{root.dataset.theme=theme;if(button)button.textContent='Theme: '+theme[0].toUpperCase()+theme.slice(1);try{localStorage.setItem('tyler-theme',theme)}catch{}};apply();button?.addEventListener('click',()=>{theme=themes[(themes.indexOf(theme)+1)%themes.length];apply();});})();
+</script>
+</body>
+</html>
